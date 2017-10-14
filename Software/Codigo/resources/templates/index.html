@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<title>Motos tiburón</title>	
+	<link rel="icon" href="../static/images/logo/logo.ico">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+	<style type="text/css">
+	.empty{
+		margin: 0px; 
+		padding: 0px;
+	}
+
+	#navbar {
+		z-index: 1000;
+		overflow: hidden;
+		background-color: #182d4f; /*Negro #272828;*/
+	}
+
+	#navbar a {
+
+		float: left;
+		display: block;
+		color: #f2f2f2;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+	}
+
+	#navbar a:hover {
+		background-color: #ddd;
+		color: #182d4f;
+	}
+
+	#navbar a.active {
+		background-color: #cc9900; /* verde #4CAF50;*/
+		color: white;
+	}
+
+	.content {
+		padding: 16px;
+	}
+
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%
+	}
+
+	.sticky + .content {
+		padding-top: 20px;
+	}
+</style>
+</head>
+
+<body onscroll="stickNavBar()">
+
+	<div id="imageSlider" class="col-sm-12 empty" style="background-color: black; min-height: 530px; -webkit-transition: background-image 0.2s ease-in-out; transition: background-image 0.2s ease-in-out;" >
+
+		<div class="col-sm-12 empty">
+
+		</div>
+
+		<div class="col-sm-12 empty" style="position: absolute; height: 60px; width:100%; bottom: 0px;">
+
+			<button onclick="showPreviousImage();"  class="btn btn-xs"  style="height: 60px; float:left; background-color: rgb(128, 128, 128,0.5)">		
+				<span class="glyphicon glyphicon-chevron-left" style="color: white"></span>
+			</button>
+
+			<button onclick="showNextImage();"  class="btn btn-xs"  style="height: 60px; float:right;  background-color: rgb(128, 128, 128,0.5)">
+				<span class="glyphicon glyphicon-chevron-right" style="color: white"></span>
+			</button>
+
+			<button class="btn btn-xs" style="background-color: transparent;  display: block; margin: 0 auto; ">
+				<span id="sliderSpan1" class="glyphicon glyphicon-asterisk" style="color: grey;"></span>
+				<span id="sliderSpan2"  class="glyphicon glyphicon-asterisk" style="color: white;"></span>
+				<span id="sliderSpan3" class="glyphicon glyphicon-asterisk" style="color: grey;"></span>
+			</button>
+		</div>
+	</div>
+
+
+	<div id="navbar" class="col-sm-12" style="min-height: 40px;" >
+		<a class="active" href="javascript:void(0)">
+			<span class="glyphicon glyphicon-home"></span>
+		</a>
+		<a href="javascript:void(0)">Empresa</a>
+		<a href="javascript:void(0)">Servicios</a>
+		<a href="javascript:void(0)">Clientes</a>
+		<a href="javascript:void(0)">Contacto</a>
+	</div>
+
+
+
+	<div class="content" style="text-align: center; background-color: white; min-height: 600px;">
+		<!-- azul #345589 -->
+		<div class="col-sm-12" style="min-height: 60px">
+		</div>
+
+		<div class="col-sm-12">
+			<h2>Motos tiburón</h2>
+			<h3>Un servicio de motoristas...</h3>
+
+			 <img src="../static/images/home/moto1.png" alt="Moto en rampa" height="500" > 
+
+
+			<h3>... para motoristas</h3>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+
+	/********************************
+	* Visor de imágenes
+	********************************/
+	var imagesPath = [
+	"../static/images/home/slider/1.jpg",
+	"../static/images/home/slider/2.jpg",
+	"../static/images/home/slider/3.jpg"
+	];
+
+	var sliderSpans = [
+	"sliderSpan1",
+	"sliderSpan2",
+	"sliderSpan3"
+	];
+
+	var indexActualImage = 0;
+	var indexMaxValue = imagesPath.length - 1;
+	showImage(indexActualImage);
+	var transicionFondo = setInterval(function () { showNextImage(); }, 3000);
+
+	function resetTransicionFondo(){
+		clearInterval(transicionFondo);
+		transicionFondo = setInterval(function () { showNextImage(); }, 3000);
+	}
+
+	function showNextImage(){
+
+
+		indexActualImage++;
+		if(indexActualImage > indexMaxValue){
+			indexActualImage = 0;
+		}
+		showImage(indexActualImage);
+
+
+	}
+
+	function showPreviousImage(){
+
+		indexActualImage--;
+		if(indexActualImage < 0){
+			indexActualImage = indexMaxValue;
+		}
+		showImage(indexActualImage);
+	}
+
+	function showImage(indexToShow){
+
+		document.getElementById(sliderSpans[0]).style.color = 'grey';
+		document.getElementById(sliderSpans[1]).style.color = 'grey';
+		document.getElementById(sliderSpans[2]).style.color = 'grey';
+		document.getElementById(sliderSpans[indexToShow]).style.color = 'white';
+
+
+		var strUrl = 'url(' + imagesPath[indexToShow] + ')';
+		console.log("Imagen a mostrar:");
+		console.log(strUrl);
+
+		document.getElementById("imageSlider").style.backgroundRepeat = 'no-repeat';
+		document.getElementById("imageSlider").style.backgroundPosition = 'center';
+		document.getElementById("imageSlider").style.backgroundSize = 'cover'; 
+		document.getElementById("imageSlider").style.backgroundImage = strUrl;
+
+		resetTransicionFondo();
+	}
+
+
+
+	/********************************
+	* Menú flotante
+	********************************/
+	var navbar = document.getElementById("navbar");
+	var sticky = navbar.offsetTop;
+
+	function stickNavBar() {
+		if (window.pageYOffset >= sticky) {
+			navbar.classList.add("sticky")
+		} else {
+			navbar.classList.remove("sticky");
+		}
+	}
+
+	
+</script>
+
+
+
+</body>
+</html>
