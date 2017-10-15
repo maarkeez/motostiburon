@@ -118,7 +118,7 @@
 					<div class="col-sm-5"></div>
 					<label class="col-sm-2 control-label">Origen</label>
 					<div class="col-sm-5">
-						<input class="form-control" id="orgien" type="text"/>
+						<input class="form-control" id="origen" type="text" onchange="geocodeAddress();" />
 					</div>
 				</div>
 
@@ -137,7 +137,11 @@
 						<input class="form-control" id="email" type="text"/>
 					</div>
 				</div>
+
+				<div id="map" style="height: 350px; width: 525px;  right: 0px; float: right;"></div>
 			</form>
+
+
 
 			
 
@@ -230,8 +234,76 @@
 		}
 	}
 
-	
+	/********************************
+	* Mapa
+	********************************/
+	var map;
+	var geoCoder; 
+
+	function initMap() {
+		map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: -34.397, lng: 150.644},
+			zoom: 17
+		});
+		geocoder = new google.maps.Geocoder();
+
+		var infoWindow = new google.maps.InfoWindow({map: map});
+
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var pos = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+
+				var marker = new google.maps.Marker({
+					position: pos,
+					map: map,
+				});
+
+				map.setCenter(pos);
+			}, function() {
+				handleLocationError(true, infoWindow, map.getCenter());
+			});
+		} else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      	infoWindow.setPosition(pos);
+      	infoWindow.setContent(browserHasGeolocation ?
+      		'Error: The Geolocation service failed.' :
+      		'Error: Your browser doesn\'t support geolocation.');
+      }
+  }
+
+  function geocodeAddress() {
+        var address = document.getElementById('origen').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+          	console.log("Dirección encontrada. RESULTS ==> ");
+          	console.log(results);
+
+            map.setCenter(results[0].geometry.location);
+
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+            map.setZoom(15);
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+
+
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJOu9rzWpuJzuybS0Q78JRwNk-O9J7g6Q&callback=initMap"
+async defer></script>
 
 
 
