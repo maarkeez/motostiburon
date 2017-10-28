@@ -1,309 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<meta charset="UTF-8"> 
-	<title>Motos tiburón</title>	
-	<link rel="icon" href="../static/images/logo/logo.ico">
+<meta charset="utf-8" />
+<!-- Necesario para que reconozca todo en internet explorer -->
+<meta http-equiv="X-UA-Compatible" content="IE=11" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta http-equiv="Content-type" content="text/html;" charset="utf-8"/>
+<!-- encoding para la página -->
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Codificación necesaria para que sea aceptado por todos los dispositivos gracias a bootstrap -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<title>Motos tiburón</title>
 
-	<style type="text/css">
-	.empty{
-		margin: 0px; 
-		padding: 0px;
-	}
 
-	#navbar {
-		z-index: 1000;
-		overflow: hidden;
-		background-color: #182d4f; /*Negro #272828;*/
-	}
+<link rel="icon" data-th-href="@{/images/logo/logo.ico}"></link>
 
-	#navbar a {
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 
-		float: left;
-		display: block;
-		color: #f2f2f2;
-		text-align: center;
-		padding: 14px 16px;
-		text-decoration: none;
-		font-size: 17px;
-	}
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	#navbar a:hover {
-		background-color: #ddd;
-		color: #182d4f;
-	}
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	#navbar a.active {
-		background-color: #cc9900; /* verde #4CAF50;*/
-		color: white;
-	}
-
-	.content {
-		padding: 16px;
-	}
-
-	.sticky {
-		position: fixed;
-		top: 0;
-		width: 100%
-	}
-
-	.sticky + .content {
-		padding-top: 20px;
-	}
-</style>
+<link rel="stylesheet" data-th-href="@{/css/index.css}"></link>
 </head>
 
 <body onscroll="stickNavBar()">
 
-	<div id="imageSlider" class="col-sm-12 empty" style="background-color: black; min-height: 530px; -webkit-transition: background-image 0.2s ease-in-out; transition: background-image 0.2s ease-in-out;" >
+	<div id="imageSlider" class="col-sm-12 empty"
+		style="background-color: black; min-height: 530px; -webkit-transition: background-image 0.2s ease-in-out; transition: background-image 0.2s ease-in-out;">
 
-		<div class="col-sm-12 empty">
+		<div class="col-sm-12 empty"></div>
 
-		</div>
+		<div class="col-sm-12 empty"
+			style="position: absolute; height: 60px; width: 100%; bottom: 0px;">
 
-		<div class="col-sm-12 empty" style="position: absolute; height: 60px; width:100%; bottom: 0px;">
-
-			<button onclick="showPreviousImage();"  class="btn btn-xs"  style="height: 60px; float:left; background-color: rgb(128, 128, 128,0.5)">		
+			<button onclick="showPreviousImage();" class="btn btn-xs"
+				style="height: 60px; float: left; background-color: rgb(128, 128, 128, 0.5)">
 				<span class="glyphicon glyphicon-chevron-left" style="color: white"></span>
 			</button>
 
-			<button onclick="showNextImage();"  class="btn btn-xs"  style="height: 60px; float:right;  background-color: rgb(128, 128, 128,0.5)">
+			<button onclick="showNextImage();" class="btn btn-xs"
+				style="height: 60px; float: right; background-color: rgb(128, 128, 128, 0.5)">
 				<span class="glyphicon glyphicon-chevron-right" style="color: white"></span>
 			</button>
 
-			<button class="btn btn-xs" style="background-color: transparent;  display: block; margin: 0 auto; ">
-				<span id="sliderSpan1" class="glyphicon glyphicon-asterisk" style="color: grey;"></span>
-				<span id="sliderSpan2"  class="glyphicon glyphicon-asterisk" style="color: white;"></span>
-				<span id="sliderSpan3" class="glyphicon glyphicon-asterisk" style="color: grey;"></span>
+			<button class="btn btn-xs"
+				style="background-color: transparent; display: block; margin: 0 auto;">
+				<span id="sliderSpan1" class="glyphicon glyphicon-asterisk"
+					style="color: grey;"></span> <span id="sliderSpan2"
+					class="glyphicon glyphicon-asterisk" style="color: white;"></span>
+				<span id="sliderSpan3" class="glyphicon glyphicon-asterisk"
+					style="color: grey;"></span>
 			</button>
 		</div>
 	</div>
 
 
-	<div id="navbar" class="col-sm-12" style="min-height: 40px;" >
-		<a class="active" href="javascript:void(0)">
-			<span class="glyphicon glyphicon-home"></span>
-		</a>
-		<a href="javascript:void(0)">Empresa</a>
-		<a href="javascript:void(0)">Servicios</a>
-		<a href="javascript:void(0)">Clientes</a>
-		<a href="javascript:void(0)">Contacto</a>
+	<div id="navbar" class="col-sm-12" style="min-height: 40px;">
+		<a class="active" href="javascript:void(0)"> <span
+			class="glyphicon glyphicon-home"></span>
+		</a> <a href="javascript:void(0)">Empresa</a> <a href="javascript:void(0)">Servicios</a>
+		<a href="javascript:void(0)">Clientes</a> <a href="javascript:void(0)">Contacto</a>
+	</div>
+
+	
+
+
+
+	<div class="content"
+		style="text-align: center; background-color: white; min-height: 600px;">
+		
+		<div class="col-sm-12" style="min-height: 60px"></div>
+		
+		<div data-th-include="${contenedor}::${fragmento}"></div>
+		
+		
 	</div>
 
 
+	<script data-th-inline="javascript">
+		// <![CDATA[
+		/********************************
+		 * Visor de imágenes
+		 ********************************/
+		var imagesPath = [ "/images/home/slider/1.jpg",
+				"/images/home/slider/2.jpg", "/images/home/slider/3.jpg" ];
 
-	<div class="content" style="text-align: center; background-color: white; min-height: 600px;">
-		<!-- azul #345589 -->
-		<div class="col-sm-12" style="min-height: 60px">
-		</div>
+		var sliderSpans = [ "sliderSpan1", "sliderSpan2", "sliderSpan3" ];
 
-		<div class="col-sm-12">
-			<h2>Motos tiburón</h2>
-			<h3>Un servicio de motoristas...</h3>
-
-			<!-- img src="../static/images/home/moto1.png" alt="Moto en rampa" height="500" style="opacity: 0.2; width: 50%; float: left;" --> 
-
-			<form class="form-horizontal" style="height: 500px; background-image: url(../static/images/home/moto1.1.png); background-repeat: no-repeat; background-origin: center; background-size: contain; ">
-				<div class="form-group">
-					<div class="col-sm-5"></div>
-					<label class="col-sm-2 control-label">Origen</label>
-					<div class="col-sm-5">
-						<input class="form-control" id="origen" type="text" onchange="geocodeAddress();" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-5"></div>					
-					<label class="col-sm-2 control-label">Destino</label>
-					<div class="col-sm-5">
-						<input class="form-control" id="destino" type="text"/>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="col-sm-5"></div>					
-					<label class="col-sm-2 control-label">E-mail</label>
-					<div class="col-sm-5">
-						<input class="form-control" id="email" type="text"/>
-					</div>
-				</div>
-
-				<div id="map" style="height: 350px; width: 525px;  right: 0px; float: right;"></div>
-			</form>
-
-
-
-			
-
-			<h3>... para motoristas</h3>
-		</div>
-	</div>
-
-
-	<script type="text/javascript">
-
-	/********************************
-	* Visor de imágenes
-	********************************/
-	var imagesPath = [
-	"../static/images/home/slider/1.jpg",
-	"../static/images/home/slider/2.jpg",
-	"../static/images/home/slider/3.jpg"
-	];
-
-	var sliderSpans = [
-	"sliderSpan1",
-	"sliderSpan2",
-	"sliderSpan3"
-	];
-
-	var indexActualImage = 0;
-	var indexMaxValue = imagesPath.length - 1;
-	showImage(indexActualImage);
-	var transicionFondo = setInterval(function () { showNextImage(); }, 3000);
-
-	function resetTransicionFondo(){
-		clearInterval(transicionFondo);
-		transicionFondo = setInterval(function () { showNextImage(); }, 3000);
-	}
-
-	function showNextImage(){
-
-
-		indexActualImage++;
-		if(indexActualImage > indexMaxValue){
-			indexActualImage = 0;
-		}
+		var indexActualImage = 0;
+		var indexMaxValue = imagesPath.length - 1;
 		showImage(indexActualImage);
+		var transicionFondo = setInterval(function() {
+			showNextImage();
+		}, 3000);
 
-
-	}
-
-	function showPreviousImage(){
-
-		indexActualImage--;
-		if(indexActualImage < 0){
-			indexActualImage = indexMaxValue;
+		function resetTransicionFondo() {
+			clearInterval(transicionFondo);
+			transicionFondo = setInterval(function() {
+				showNextImage();
+			}, 3000);
 		}
-		showImage(indexActualImage);
-	}
 
-	function showImage(indexToShow){
+		function showNextImage() {
 
-		document.getElementById(sliderSpans[0]).style.color = 'grey';
-		document.getElementById(sliderSpans[1]).style.color = 'grey';
-		document.getElementById(sliderSpans[2]).style.color = 'grey';
-		document.getElementById(sliderSpans[indexToShow]).style.color = 'white';
+			indexActualImage++;
+			if (indexActualImage > indexMaxValue) {
+				indexActualImage = 0;
+			}
+			showImage(indexActualImage);
 
-
-		var strUrl = 'url(' + imagesPath[indexToShow] + ')';
-		console.log("Imagen a mostrar:");
-		console.log(strUrl);
-
-		document.getElementById("imageSlider").style.backgroundRepeat = 'no-repeat';
-		document.getElementById("imageSlider").style.backgroundPosition = 'center';
-		document.getElementById("imageSlider").style.backgroundSize = 'cover'; 
-		document.getElementById("imageSlider").style.backgroundImage = strUrl;
-
-		resetTransicionFondo();
-	}
-
-
-
-	/********************************
-	* Menú flotante
-	********************************/
-	var navbar = document.getElementById("navbar");
-	var sticky = navbar.offsetTop;
-
-	function stickNavBar() {
-		if (window.pageYOffset >= sticky) {
-			navbar.classList.add("sticky")
-		} else {
-			navbar.classList.remove("sticky");
 		}
-	}
 
-	/********************************
-	* Mapa
-	********************************/
-	var map;
-	var geoCoder; 
+		function showPreviousImage() {
 
-	function initMap() {
-		map = new google.maps.Map(document.getElementById('map'), {
-			center: {lat: -34.397, lng: 150.644},
-			zoom: 17
-		});
-		geocoder = new google.maps.Geocoder();
+			indexActualImage--;
+			if (indexActualImage < 0) {
+				indexActualImage = indexMaxValue;
+			}
+			showImage(indexActualImage);
+		}
 
-		var infoWindow = new google.maps.InfoWindow({map: map});
+		function showImage(indexToShow) {
 
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-				var pos = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				};
+			document.getElementById(sliderSpans[0]).style.color = 'grey';
+			document.getElementById(sliderSpans[1]).style.color = 'grey';
+			document.getElementById(sliderSpans[2]).style.color = 'grey';
+			document.getElementById(sliderSpans[indexToShow]).style.color = 'white';
 
-				var marker = new google.maps.Marker({
-					position: pos,
-					map: map,
-				});
+			var strUrl = 'url(' + imagesPath[indexToShow] + ')';
+			console.log("Imagen a mostrar:");
+			console.log(strUrl);
 
-				map.setCenter(pos);
-			}, function() {
-				handleLocationError(true, infoWindow, map.getCenter());
-			});
-		} else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-      }
+			document.getElementById("imageSlider").style.backgroundRepeat = 'no-repeat';
+			document.getElementById("imageSlider").style.backgroundPosition = 'center';
+			document.getElementById("imageSlider").style.backgroundSize = 'cover';
+			document.getElementById("imageSlider").style.backgroundImage = strUrl;
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-      	infoWindow.setPosition(pos);
-      	infoWindow.setContent(browserHasGeolocation ?
-      		'Error: The Geolocation service failed.' :
-      		'Error: Your browser doesn\'t support geolocation.');
-      }
-  }
+			resetTransicionFondo();
+		}
 
-  function geocodeAddress() {
-        var address = document.getElementById('origen').value;
-        geocoder.geocode({'address': address}, function(results, status) {
-          if (status === 'OK') {
-          	console.log("Dirección encontrada. RESULTS ==> ");
-          	console.log(results);
+		/********************************
+		 * Menú flotante
+		 ********************************/
+		var navbar = document.getElementById("navbar");
+		var sticky = navbar.offsetTop;
 
-            map.setCenter(results[0].geometry.location);
+		function stickNavBar() {
+			if (window.pageYOffset >= sticky) {
+				navbar.classList.add("sticky")
+			} else {
+				navbar.classList.remove("sticky");
+			}
+		}
 
-            var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-            });
-            map.setZoom(15);
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
+		
+		// ]]>
+	</script>
 
-
-
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJOu9rzWpuJzuybS0Q78JRwNk-O9J7g6Q&callback=initMap"
-async defer></script>
+	
 
 
 

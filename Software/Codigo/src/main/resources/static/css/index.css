@@ -1,0 +1,44 @@
+.empty {
+	margin: 0px;
+	padding: 0px;
+}
+
+#navbar {
+	z-index: 1000;
+	overflow: hidden;
+	background-color: #182d4f; /*Negro #272828;*/
+}
+
+#navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+#navbar a:hover {
+	background-color: #ddd;
+	color: #182d4f;
+}
+
+#navbar a.active {
+	background-color: #cc9900; /* verde #4CAF50;*/
+	color: white;
+}
+
+.content {
+	padding: 16px;
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%
+}
+
+.sticky+.content {
+	padding-top: 20px;
+}
