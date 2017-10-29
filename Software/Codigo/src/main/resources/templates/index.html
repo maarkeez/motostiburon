@@ -6,7 +6,7 @@
 <!-- Necesario para que reconozca todo en internet explorer -->
 <meta http-equiv="X-UA-Compatible" content="IE=11" />
 <meta http-equiv="X-UA-Compatible" content="IE=9" />
-<meta http-equiv="Content-type" content="text/html;" charset="utf-8"/>
+<meta http-equiv="Content-type" content="text/html;" charset="utf-8" />
 <!-- encoding para la página -->
 
 <!-- Codificación necesaria para que sea aceptado por todos los dispositivos gracias a bootstrap -->
@@ -66,24 +66,26 @@
 
 
 	<div id="navbar" class="col-sm-12" style="min-height: 40px;">
-		<a class="active" href="javascript:void(0)"> <span
+		<a class="active" href="/motostiburon/home"> <span
 			class="glyphicon glyphicon-home"></span>
-		</a> <a href="javascript:void(0)">Empresa</a> <a href="javascript:void(0)">Servicios</a>
-		<a href="javascript:void(0)">Clientes</a> <a href="javascript:void(0)">Contacto</a>
+		</a> <a href="/motostiburon/empresa">Empresa</a> <a
+			href="/motostiburon/servicios">Servicios</a> <a
+			href="/motostiburon/clientes">Clientes</a> <a
+			href="/motostiburon/contacto">Contacto</a>
 	</div>
 
-	
 
 
 
-	<div class="content"
-		style="text-align: center; background-color: white; min-height: 600px;">
-		
+
+	<div class="col-sm-12"
+		style="background-color: white; min-height: 300px; margin: 0px; padding: 0px;">
+
 		<div class="col-sm-12" style="min-height: 60px"></div>
-		
+
 		<div data-th-include="${contenedor}::${fragmento}"></div>
-		
-		
+
+
 	</div>
 
 
@@ -138,8 +140,8 @@
 			document.getElementById(sliderSpans[indexToShow]).style.color = 'white';
 
 			var strUrl = 'url(' + imagesPath[indexToShow] + ')';
-			console.log("Imagen a mostrar:");
-			console.log(strUrl);
+			// 			console.log("Imagen a mostrar:");
+			// 			console.log(strUrl);
 
 			document.getElementById("imageSlider").style.backgroundRepeat = 'no-repeat';
 			document.getElementById("imageSlider").style.backgroundPosition = 'center';
@@ -163,11 +165,10 @@
 			}
 		}
 
-		
 		// ]]>
 	</script>
 
-	
+
 
 
 
