@@ -31,6 +31,11 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" data-th-href="@{/css/index.css}"></link>
+
+<!-- Hoja de estilo fuentes google -->
+<link href="/font/material-design-icons/material-icons.css"
+	rel="stylesheet" />
+
 </head>
 
 <body onscroll="stickNavBar()">
@@ -64,19 +69,22 @@
 		</div>
 	</div>
 
+	<div id="cabecera" class="navbar col-sm-12"
+		style="height: 45px; border: 0px;padding-right:0px;">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#collapseMenu"
+				style="width: 45px; height: 45px; margin: 0px; padding: 0px; border: 0px; margin-right:5px  ;">
+				<span class="material-icons"
+					style="font-size: 40px; color: white; margin: 3px;width: 100%; border-radius: 7px; border: 1px; ">dehaze</span>
+			</button>
+			<a class="navbar-brand active" href="/motostiburon/home"> <span
+				class="glyphicon glyphicon-home"></span>
+			</a>
+		</div>
 
-	<div id="navbar" class="col-sm-12" style="min-height: 40px;">
-		<a class="active" href="/motostiburon/home"> <span
-			class="glyphicon glyphicon-home"></span>
-		</a>
-
-		<button type="button" class="navbar-toggle" data-toggle="collapse"
-			data-target="#myNavbar" style="margin: auto;    width: 10%;   ">
-			<img alt="Menú" data-th-src="@{/images/collapse_menu_35x30.png}" style="right:20px" />
-		</button>
-
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
+		<div class="collapse navbar-collapse" id="collapseMenu">
+			<ul class="nav navbar-nav" style="margin:0px; border:0px">
 				<li><a href="/motostiburon/empresa">Empresa</a></li>
 				<li><a href="/motostiburon/servicios">Servicios</a></li>
 				<li><a href="/motostiburon/clientes">Clientes</a></li>
@@ -214,7 +222,7 @@
 		/********************************
 		 * Menú flotante
 		 ********************************/
-		var navbar = document.getElementById("navbar");
+		var navbar = document.getElementById("cabecera");
 		var sticky = navbar.offsetTop;
 		var bodyContent = document.getElementById("bodyContent");
 
