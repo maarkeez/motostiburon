@@ -1,6 +1,7 @@
 package com.motostiburon.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +19,16 @@ public class PresupuestoController {
 	private static final String CONTENEDOR = "views/motostiburon/home/presupuesto";
 	private static final String FRAGMENTO = "fragment";
 
-	public ModelAndView show(String origen, String destino) {
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ModelAndView show(HttpServletRequest request, HttpSession session) {
 		ModelAndView view = new ModelAndView("index");
 		view.addObject("contenedor", CONTENEDOR);
 		view.addObject("fragmento", FRAGMENTO);
+
+		String origen = (String) session.getAttribute("PresupuestoOrigen");
+		String destino = (String) session.getAttribute("PresupuestoDestino");
+		request.getSession().setAttribute("PresupuestoOrigen", null);
+		request.getSession().setAttribute("PresupuestoDestino", null);
 
 		if (StringUtils.isNotNullOrWhiteSpaces(origen)) {
 			view.addObject("origen", origen);
@@ -37,7 +44,9 @@ public class PresupuestoController {
 	@RequestMapping(value = "/consultar", method = RequestMethod.POST)
 	public ModelAndView consultar(HttpServletRequest request, @RequestParam(value = "origen", required = false) String origen, @RequestParam(value = "destino", required = false) String destino) {
 
-		return show(origen, destino);
+		request.getSession().setAttribute("PresupuestoOrigen", origen);
+		request.getSession().setAttribute("PresupuestoDestino", destino);
+		return new ModelAndView("redirect:/motostiburon/presupuesto");
 	}
 
 }

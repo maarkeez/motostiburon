@@ -68,23 +68,83 @@
 	<div id="navbar" class="col-sm-12" style="min-height: 40px;">
 		<a class="active" href="/motostiburon/home"> <span
 			class="glyphicon glyphicon-home"></span>
-		</a> <a href="/motostiburon/empresa">Empresa</a> <a
-			href="/motostiburon/servicios">Servicios</a> <a
-			href="/motostiburon/clientes">Clientes</a> <a
-			href="/motostiburon/contacto">Contacto</a>
+		</a>
+
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
+			data-target="#myNavbar" style="margin: auto;    width: 10%;   ">
+			<img alt="Menú" data-th-src="@{/images/collapse_menu_35x30.png}" style="right:20px" />
+		</button>
+
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a href="/motostiburon/empresa">Empresa</a></li>
+				<li><a href="/motostiburon/servicios">Servicios</a></li>
+				<li><a href="/motostiburon/clientes">Clientes</a></li>
+				<li><a href="/motostiburon/contacto">Contacto</a></li>
+				<li><a href="/motostiburon/presupuesto">Presupuesto</a></li>
+			</ul>
+		</div>
 	</div>
 
 
 
 
 
-	<div class="col-sm-12"
+	<div id="bodyContent" class="col-sm-12"
 		style="background-color: white; min-height: 300px; margin: 0px; padding: 0px;">
 
 		<div class="col-sm-12" style="min-height: 60px"></div>
 
 		<div data-th-include="${contenedor}::${fragmento}"></div>
 
+
+	</div>
+
+	<div class="col-sm-12"
+		style="min-height: 20px; background-color: white;"></div>
+
+	<div class="col-sm-12"
+		style="min-height: 300px; background-color: #333;">
+		<div class="col-sm-9" style="min-height: 200px;">
+			<div style="height: 20px;"></div>
+			<img alt="Tiburón SL." data-th-src="@{/images/logo/logo_tib.jpg}"
+				border="0" style="filter: grayscale(100%);" />
+		</div>
+		<div class="col-sm-3">
+			<p></p>
+			<p>
+				<a target="_blank" title="Síguenos en facebook" href="#"><img
+					alt="Síguenos en facebook"
+					data-th-src="@{/images/facebook_30x30.png}" border="0"
+					style="filter: grayscale(100%);" /></a> <a target="_blank"
+					title="Síguenos en twitter" href="#"><img
+					alt="Síguenos en twitter"
+					data-th-src="@{/images/twitter_30x30.png}" border="0"
+					style="filter: grayscale(100%);" /></a> <a target="_blank"
+					title="Síguenos en instagram" href="#"><img
+					alt="Síguenos en instagram"
+					data-th-src="@{/images/instagram_30x30.png}" border="0"
+					style="filter: grayscale(100%);" /></a>
+			</p>
+			<p></p>
+			<p>
+				<a href="tel:608 72 36 56" style="color: #959595; font-size: 24px;"><b>608
+						72 36 56</b></a>
+			</p>
+			<p>
+				<a style="color: #959595; font-size: 24px;"
+					href="mailto:info@motostiburon.es">info@motostiburon.es</a>
+			</p>
+			<p style="color: white; font-size: 14px;">Estamos a tu
+				disposición de Lunes a Viernes de 8h. a 17h.</p>
+
+		</div>
+		<div class="col-sm-12" style="height: 1px; background-color: gray;">
+		</div>
+		<div class="col-sm-12">
+			<p style="color: #959595; font-size: 14px;">© Copyright 2006-2018
+				TIBURON Transportes de Motos. Todos los derechos reservados.</p>
+		</div>
 
 	</div>
 
@@ -156,12 +216,16 @@
 		 ********************************/
 		var navbar = document.getElementById("navbar");
 		var sticky = navbar.offsetTop;
+		var bodyContent = document.getElementById("bodyContent");
 
 		function stickNavBar() {
 			if (window.pageYOffset >= sticky) {
-				navbar.classList.add("sticky")
+				navbar.classList.add("navbar-fixed-top")
+				bodyContent.style.paddingTop = "50px";
+
 			} else {
-				navbar.classList.remove("sticky");
+				navbar.classList.remove("navbar-fixed-top");
+				bodyContent.style.paddingTop = "0px";
 			}
 		}
 
