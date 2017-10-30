@@ -175,7 +175,7 @@
 								} else {
 									console.log('Geocode was not successful for the following reason: '
 											+ status);
-									setOrigenODestino(null, tipo, "Dirección no encontrada" );
+									setOrigenODestino(null, tipo, "Introduza una dirección" );
 								}
 							});
 		}
@@ -183,10 +183,10 @@
 		function setOrigenODestino(direccion, tipo, direccionText) {
 			if (tipo == "ORIGEN") {
 				dirOrigen = direccion;
-				document.getElementById('origen').value = direccionText;
+				document.getElementById('origen').value  = direccionText;
 			} else if (tipo == "DESTINO") {
 				dirDestino = direccion;
-				document.getElementById('destino').value = direccionText;
+				document.getElementById('destino').value  = direccionText;
 			}
 
 			callbackSetRuta();
