@@ -5,17 +5,16 @@
 
 #cabecera {
 	z-index: 1000;
-/* 	overflow: hidden; */
+	/* 	overflow: hidden; */
 	background-color: #182d4f;
 }
-
 
 #cabecera ul {
 	background-color: #182d4f;
 }
 
 #cabecera a {
-/* 	float: left; */
+	/* 	float: left; */
 	display: block;
 	color: #f2f2f2;
 	text-align: center;
@@ -31,7 +30,7 @@
 }
 
 #cabecera a.active {
-	background-color: #cc9900;
+	background-color: #f76159; /* #cc9900 */
 	color: white;
 }
 
@@ -48,3 +47,35 @@
 /* .sticky+.content { */
 /* 	padding-top: 20px; */
 /* } */
+input.form-control {
+	height: 45px;
+	font-size: 18px;
+}
+
+input::-webkit-input-placeholder {
+	font-size: 18px;
+	line-height: 2;
+}
+
+input:-ms-input-placeholder {
+	font-size: 18px;
+	line-height: 2;
+}
+
+input:-moz-placeholder {
+	font-size: 18px;
+	line-height: 2;
+}
+
+input::-moz-placeholder {
+	font-size: 18px;
+	line-height: 2;
+}
+
+.suzuki-background {
+	height: 500px;
+	background-image: url(/images/home/moto1.1.png);
+	background-repeat: no-repeat;
+	background-origin: center;
+	background-size: contain;
+}

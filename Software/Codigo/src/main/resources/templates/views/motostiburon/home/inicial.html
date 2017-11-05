@@ -4,37 +4,46 @@
 
 
 	<div class="col-sm-12" style="text-align: center;">
-		<h2>Motos tiburón</h2>
-		<h3>Un servicio de motoristas...</h3>
-		<form class="form-group"
-			style="height: 500px; background-image: url(/images/home/moto1.1.png); background-repeat: no-repeat; background-origin: center; background-size: contain;"
+		<div class="col-sm-12">
+			<h3>Un servicio de motoristas...</h3>
+		</div>
+		<form class="form-group  "
 			data-th-action="@{/motostiburon/presupuesto/consultar}" method="POST">
 
+
+			<div class="hidden-xs col-sm-6 suzuki-background"></div>
+
+			<div class="col-sm-6" style="text-align: left;">
+				<h4 style="color: #999999">
+					<b>Transportamos tu moto o quad, sólo dinos dónde y cuándo</b>
+				</h4>
+			</div>
+
+
 			<div class="col-sm-6"></div>
+
 			<div class="form-group col-sm-4" style="text-align: left;">
-				<label class="control-label" for="origen">Lugar de recogida</label>
-				<input class="form-control col-sm-5" id="origen" name="origen"
-					type="text" />
+
+				<input placeholder="Lugar de recogida" class="form-control col-sm-5"
+					id="origen" name="origen" type="text" />
 			</div>
 
 			<div class="form-group col-sm-2" style="text-align: left;">
-				<label class="control-label" for="fechaEntrega">Fecha de
-					entrega</label> <input class="form-control col-sm-5 datepicker"
-					id="fechaEntrega" name="fechaEntrega" type="text" onfocus="blur();" />
+				<input placeholder="Fecha de entrega"
+					class="form-control col-sm-5 datepicker" id="fechaEntrega"
+					name="fechaEntrega" type="text" onfocus="blur();" />
 			</div>
 
 			<div class="col-sm-6"></div>
 			<div class="form-group col-sm-4" style="text-align: left;">
-				<label class="control-label" for="fechaRecogida">Lugar de
-					entrega</label> <input class="form-control col-sm-5" id="destino"
-					name="destino" type="text" />
+				<input placeholder="Lugar de entrega" class="form-control col-sm-5"
+					id="destino" name="destino" type="text" />
 			</div>
 
 			<div class="form-group col-sm-2" style="text-align: left;">
-				<label class="control-label" for="fechaRecogida">Fecha de
-					recogida</label> <input class="form-control col-sm-5 datepicker"
-					id="fechaRecogida" name="fechaRecogida" type="text"
-					onfocus="blur();" />
+				<input placeholder="Fecha de recogida"
+					class="form-control col-sm-5 datepicker" id="fechaRecogida"
+					name="fechaRecogida" type="text" onfocus="blur();" />
 			</div>
 
 			<div class="col-sm-6"></div>
@@ -43,6 +52,12 @@
 			</div>
 
 		</form>
+		
+
+
+		<div class="col-sm-12">
+			<h3>...para motoristas</h3>
+		</div>
 
 		<script type="text/javascript">
 			$('.datepicker').datepicker({
@@ -54,6 +69,6 @@
 				autoclose : true
 			});
 		</script>
-		<h3>... para motoristas</h3>
+
 	</div>
 </div>

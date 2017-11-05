@@ -31,19 +31,26 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<script type="text/javascript" data-th-src="@{/js/bootstrap-datepicker.es.min.js}"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>	
-	
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript"
+	data-th-src="@{/js/bootstrap-datepicker.es.min.js}"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" />
+
 <link rel="stylesheet" data-th-href="@{/css/index.css}"></link>
 
 <!-- Hoja de estilo fuentes google -->
 <link href="/font/material-design-icons/material-icons.css"
 	rel="stylesheet" />
+	
+	
+<!-- 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,300,700" media="screen, print"/> -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"  media="screen, print"/> 
 
 </head>
 
-<body onscroll="stickNavBar()">
+<body onscroll="stickNavBar()" style="font-family: 'Source Sans Pro', sans-serif; font-size:18px;">
 
 	<div id="imageSlider" class="col-sm-12 empty"
 		style="background-color: black; min-height: 530px; -webkit-transition: background-image 0.2s ease-in-out; transition: background-image 0.2s ease-in-out;">
@@ -85,10 +92,16 @@
 			</button>
 			<a class="navbar-brand active" href="/motostiburon/home"> <span
 				class="glyphicon glyphicon-home"></span>
-			</a>
+				
+			</a> <img class="visible-xs motosTiburonLetras" alt="Motos tiburón"
+				data-th-src="@{/images/motos_tiburon_letras.png}"
+				style="height: 120px; position: relative; top: -30px; float: right" />
+
+
+
 		</div>
 
-		<div class="collapse navbar-collapse" id="collapseMenu">
+		<div class="collapse navbar-collapse" id="collapseMenu" >
 			<ul class="nav navbar-nav" style="margin: 0px; border: 0px">
 				<li><a href="/motostiburon/empresa">Empresa</a></li>
 				<li><a href="/motostiburon/servicios">Servicios</a></li>
@@ -96,6 +109,12 @@
 				<li><a href="#">Contacto</a></li>
 				<li><a href="/motostiburon/presupuesto">Presupuesto</a></li>
 			</ul>
+
+			<div>
+				<img class="hidden-xs motosTiburonLetras" alt="Motos tiburón"
+					data-th-src="@{/images/motos_tiburon_letras.png}"
+					style="height: 120px; position: relative; top: -30px; float: right" />
+			</div>
 		</div>
 	</div>
 
@@ -235,10 +254,13 @@
 			if (window.pageYOffset >= sticky) {
 				navbar.classList.add("navbar-fixed-top")
 				bodyContent.style.paddingTop = "50px";
+				$( ".motosTiburonLetras" ).css('top',"-25px");
 
 			} else {
 				navbar.classList.remove("navbar-fixed-top");
 				bodyContent.style.paddingTop = "0px";
+				$( ".motosTiburonLetras" ).css('top',"-30px");
+
 			}
 		}
 
