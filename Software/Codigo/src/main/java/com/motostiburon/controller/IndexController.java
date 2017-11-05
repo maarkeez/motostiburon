@@ -1,5 +1,8 @@
 package com.motostiburon.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,10 +58,19 @@ public class IndexController {
 	@RequestMapping("/clientes")
 	public ModelAndView showClientes() {
 		ModelAndView view = new ModelAndView("index");
-
+		
+		List<String> listadoLogosClientes = new ArrayList<String>();
+		listadoLogosClientes.add("bmw-logo.png");
+		listadoLogosClientes.add("harley-davidson-logo.png");
+		listadoLogosClientes.add("honda-logo.png");
+		listadoLogosClientes.add("piaggio-logo.png");
+		listadoLogosClientes.add("suzuki-logo.png");
+		listadoLogosClientes.add("yamaha-logo.png");
+		
 		view.addObject("contenedor", CONTENEDOR_CLIENTES);
 		view.addObject("fragmento", FRAGMENTO);
 		view.addObject(AUTO_SCROLL_LABEL, true);
+		view.addObject("listadoLogosClientes",listadoLogosClientes);
 
 		return view;
 	}

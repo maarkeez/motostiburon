@@ -1,5 +1,17 @@
 <div data-th-fragment="fragment">
 	<div class="col-sm-12" style="text-align: center;">
-		
+
+
+		<div class="col-sm-12" style="text-align: center; ">
+			<img  alt="Confían en nosotros" data-th-src="@{/images/clientes/confianEnNosotros.png}"
+				 style="width: 300px;" />
+			
+		</div>
+
+		<div class="col-sm-4" data-th-each="logo : ${listadoLogosClientes}" style="height:200px;">
+			<img data-th-alt="${logo}" data-th-src="@{/images/clientes/}+${logo}"
+				class="cover" style="height: 150px;" />
+		</div>
+
 	</div>
 </div>
