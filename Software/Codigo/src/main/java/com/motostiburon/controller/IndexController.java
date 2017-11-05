@@ -15,6 +15,8 @@ public class IndexController {
 	private static final String CONTENEDOR_CLIENTES = "views/motostiburon/home/clientes";
 	
 	private static final String FRAGMENTO = "fragment";
+	
+	private static final String AUTO_SCROLL_LABEL = "autoScrollEnabled";
 
 	@RequestMapping("/home")
 	public ModelAndView showHome() {
@@ -30,8 +32,10 @@ public class IndexController {
 	public ModelAndView showEmpresa() {
 		ModelAndView view = new ModelAndView("index");
 		
+
 		view.addObject("contenedor", CONTENEDOR_EMPRESA);
 		view.addObject("fragmento", FRAGMENTO);
+		view.addObject(AUTO_SCROLL_LABEL, true);
 		
 		return view;
 	}
@@ -42,7 +46,8 @@ public class IndexController {
 		
 		view.addObject("contenedor", CONTENEDOR_SERVICIOS);
 		view.addObject("fragmento", FRAGMENTO);
-		
+		view.addObject(AUTO_SCROLL_LABEL, true);
+
 		return view;
 	}
 	
@@ -50,10 +55,11 @@ public class IndexController {
 	@RequestMapping("/clientes")
 	public ModelAndView showClientes() {
 		ModelAndView view = new ModelAndView("index");
-		
+
 		view.addObject("contenedor", CONTENEDOR_CLIENTES);
 		view.addObject("fragmento", FRAGMENTO);
-		
+		view.addObject(AUTO_SCROLL_LABEL, true);
+
 		return view;
 	}
 	

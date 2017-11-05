@@ -18,12 +18,16 @@ public class PresupuestoController {
 	// REFERENCIAS A CONTENEDORES
 	private static final String CONTENEDOR = "views/motostiburon/home/presupuesto";
 	private static final String FRAGMENTO = "fragment";
+	private static final String AUTO_SCROLL_LABEL = "autoScrollEnabled";
+
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView show(HttpServletRequest request, HttpSession session) {
 		ModelAndView view = new ModelAndView("index");
 		view.addObject("contenedor", CONTENEDOR);
 		view.addObject("fragmento", FRAGMENTO);
+		view.addObject(AUTO_SCROLL_LABEL, true);
+
 
 		String origen = (String) session.getAttribute("PresupuestoOrigen");
 		String destino = (String) session.getAttribute("PresupuestoDestino");

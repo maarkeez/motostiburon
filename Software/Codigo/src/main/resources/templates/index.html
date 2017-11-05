@@ -30,6 +30,11 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" data-th-src="@{/js/bootstrap-datepicker.es.min.js}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>	
+	
 <link rel="stylesheet" data-th-href="@{/css/index.css}"></link>
 
 <!-- Hoja de estilo fuentes google -->
@@ -70,13 +75,13 @@
 	</div>
 
 	<div id="cabecera" class="navbar col-sm-12"
-		style="height: 45px; border: 0px;padding-right:0px;">
+		style="height: 45px; border: 0px; padding-right: 0px;">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target="#collapseMenu"
-				style="width: 45px; height: 45px; margin: 0px; padding: 0px; border: 0px; margin-right:5px  ;">
+				style="width: 45px; height: 45px; margin: 0px; padding: 0px; border: 0px; margin-right: 5px;">
 				<span class="material-icons"
-					style="font-size: 40px; color: white; margin: 3px;width: 100%; border-radius: 7px; border: 1px; ">dehaze</span>
+					style="font-size: 40px; color: white; margin: 3px; width: 100%; border-radius: 7px; border: 1px;">dehaze</span>
 			</button>
 			<a class="navbar-brand active" href="/motostiburon/home"> <span
 				class="glyphicon glyphicon-home"></span>
@@ -84,7 +89,7 @@
 		</div>
 
 		<div class="collapse navbar-collapse" id="collapseMenu">
-			<ul class="nav navbar-nav" style="margin:0px; border:0px">
+			<ul class="nav navbar-nav" style="margin: 0px; border: 0px">
 				<li><a href="/motostiburon/empresa">Empresa</a></li>
 				<li><a href="/motostiburon/servicios">Servicios</a></li>
 				<li><a href="/motostiburon/clientes">Clientes</a></li>
@@ -115,8 +120,8 @@
 		style="min-height: 300px; background-color: #333;">
 		<div class="col-sm-9" style="min-height: 200px;">
 			<div style="height: 20px;"></div>
-			<img alt="Tiburón SL." data-th-src="@{/images/logo/logo_tib_burned.png}"
-				border="0"  />
+			<img alt="Tiburón SL."
+				data-th-src="@{/images/logo/logo_tib_burned.png}" border="0" />
 		</div>
 		<div class="col-sm-3">
 			<p></p>
@@ -236,6 +241,19 @@
 				bodyContent.style.paddingTop = "0px";
 			}
 		}
+
+		/***********************************
+		 * Auto scroll
+		 ***********************************/
+		var autoScrollEnabled = /*[[${autoScrollEnabled}]]*/false;
+		console.log("autoScrollEnabled==>" + autoScrollEnabled);
+		$(document).ready(function() {
+			if (autoScrollEnabled) {
+				$('body,html').animate({
+					scrollTop : sticky
+				}, 2000);
+			}
+		});
 
 		// ]]>
 	</script>
