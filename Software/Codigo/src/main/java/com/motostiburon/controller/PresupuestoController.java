@@ -1,8 +1,11 @@
 package com.motostiburon.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +23,6 @@ public class PresupuestoController {
 	private static final String FRAGMENTO = "fragment";
 	private static final String AUTO_SCROLL_LABEL = "autoScrollEnabled";
 
-
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView show(HttpServletRequest request, HttpSession session) {
 		ModelAndView view = new ModelAndView("index");
@@ -28,11 +30,15 @@ public class PresupuestoController {
 		view.addObject("fragmento", FRAGMENTO);
 		view.addObject(AUTO_SCROLL_LABEL, true);
 
-
 		String origen = (String) session.getAttribute("PresupuestoOrigen");
 		String destino = (String) session.getAttribute("PresupuestoDestino");
+		Date fechaEntrega = (Date) session.getAttribute("PresupuestoFechaEntrega");
+		Date fechaRecogida = (Date) session.getAttribute("PresupuestoFechaRecogida");
+
 		request.getSession().setAttribute("PresupuestoOrigen", null);
 		request.getSession().setAttribute("PresupuestoDestino", null);
+		request.getSession().setAttribute("PresupuestoFechaEntrega", null);
+		request.getSession().setAttribute("PresupuestoFechaRecogida", null);
 
 		if (StringUtils.isNotNullOrWhiteSpaces(origen)) {
 			view.addObject("origen", origen);
@@ -42,14 +48,21 @@ public class PresupuestoController {
 			view.addObject("destino", destino);
 		}
 
+		view.addObject("fechaEntrega", fechaEntrega);
+		view.addObject("fechaRecogida", fechaRecogida);
+
 		return view;
 	}
 
 	@RequestMapping(value = "/consultar", method = RequestMethod.POST)
-	public ModelAndView consultar(HttpServletRequest request, @RequestParam(value = "origen", required = false) String origen, @RequestParam(value = "destino", required = false) String destino) {
+	public ModelAndView consultar(HttpServletRequest request, @RequestParam(value = "origen", required = false) String origen, @RequestParam(value = "destino", required = false) String destino,
+			@RequestParam(value = "fechaEntrega") @DateTimeFormat(pattern = "dd/MM/yyyy") Date fechaEntrega, @RequestParam(value = "fechaRecogida") @DateTimeFormat(pattern = "dd/MM/yyyy") Date fechaRecogida) {
 
 		request.getSession().setAttribute("PresupuestoOrigen", origen);
 		request.getSession().setAttribute("PresupuestoDestino", destino);
+		request.getSession().setAttribute("PresupuestoFechaEntrega", fechaEntrega);
+		request.getSession().setAttribute("PresupuestoFechaRecogida", fechaRecogida);
+
 		return new ModelAndView("redirect:/motostiburon/presupuesto");
 	}
 
