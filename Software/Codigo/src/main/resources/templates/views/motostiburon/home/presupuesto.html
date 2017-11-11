@@ -1,36 +1,91 @@
 <div data-th-fragment="fragment">
 
 
-	<div class="col-sm-12" style="min-height:450px;">
+	<div class="col-sm-12" style="min-height: 450px;">
 		<div id="map" class="col-sm-7" style="min-height: 350px;"></div>
 
 
 		<div class="col-sm-5">
 
+			<form id="formulario" class="empty"
+				data-th-action="@{/motostiburon/presupuesto/email/consultar}"
+				method="POST" >
+				<div class="form-group col-sm-6">
+					<label for="origen">Origen</label> <input
+						class="form-control col-sm-5" id="origen" name="origen"
+						type="text" onchange="setOrigen()" data-th-value="${origen}" />
+					<button class="btn btn-xs btn-info"
+						onclick="getCurrentAddress('ORIGEN');">
+						<span class="glyphicon glyphicon-map-marker"></span>
+					</button>
+				</div>
 
-			<div class="form-group col-sm-6">
-				<label for="origen">Origen</label> <input class="form-control col-sm-5"
-					id="origen" type="text" onchange="setOrigen()"
-					data-th-value="${origen}" />
-					<button class="btn btn-xs btn-info" onclick="getCurrentAddress('ORIGEN');"><span class="glyphicon glyphicon-map-marker"></span></button>
-			</div>
+				<div class="form-group col-sm-6">
+					<label for="destino">Destino</label> <input
+						class="form-control  col-sm-5" id="destino" name="destino"
+						type="text" onchange="setDestino();" data-th-value="${destino}" />
+					<button class="btn btn-xs btn-info"
+						onclick="getCurrentAddress('DESTINO');">
+						<span class="glyphicon glyphicon-map-marker"></span>
+					</button>
+				</div>
 
-			<div class="form-group col-sm-6">
-				<label for="destino">Destino</label> <input class="form-control  col-sm-5"
-					id="destino" type="text" onchange="setDestino();"
-					data-th-value="${destino}" />
-					<button class="btn btn-xs btn-info"  onclick="getCurrentAddress('DESTINO');"><span class="glyphicon glyphicon-map-marker"></span></button>
-			</div>
+				<div class="form-group col-sm-6">
+					<label>Fecha de entrega</label> <input
+						class="form-control col-sm-5 datepicker" name="fechaEntrega"
+						type="text" data-th-value="${fechaEntrega}" onfocus="blur();" />
+				</div>
+
+				<div class="form-group col-sm-6">
+					<label>Fecha de recogida</label> <input
+						class="form-control col-sm-5 datepicker" name="fechaRecogida"
+						type="text" data-th-value="${fechaRecogida}" onfocus="blur();" />
+				</div>
 
 
-			<div class="col-sm-6">
-				<label>Distancia</label> <span id="distancia"></span>
-			</div>
-			<div class="col-sm-6">
-				<label> Duración</label> <span id="duracion"></span>
-			</div>
+				<div class="col-sm-6">
+					<label>Distancia</label> <span id="distancia"></span>
+				</div>
+				<div class="col-sm-6">
+					<label> Duración</label> <span id="duracion"></span>
+				</div>
+
+
+				<div class="form-group col-sm-12">
+					<label>E-mail</label> <input class="form-control col-sm-5"
+						type="text" id="email" name="email"
+						placeholder="Direccion de correo electrónico" />
+				</div>
+
+				<button class="btn btn-sm">Consultar</button>
+			</form>
 		</div>
 	</div>
+<!-- 	<button id="btn-Convert-Html2Image">Download</button> -->
+	<script data-th-inline="javascript">
+		$("#btn-Convert-Html2Image").on(
+				'click',
+				function() {
+
+					var element = $("#formulario");
+					var getCanvas; // global variable
+
+					html2canvas(element, {
+						onrendered : function(canvas) {
+							getCanvas = canvas;
+							
+							var imgageData = getCanvas.toDataURL("image/png");
+							// Now browser starts downloading it instead of just showing it
+							var newData = imgageData.replace(/^data:image\/png/,
+									"data:application/octet-stream");
+							window.open(newData);
+						}
+					});
+
+					
+				});
+	</script>
+
 
 	<script data-th-inline="javascript">
 		// <![CDATA[
@@ -56,14 +111,12 @@
 					lng : 150.644
 				},
 				zoom : 17,
-				 mapTypeControlOptions: {
-				     mapTypeIds: []
-				  },
-				mapTypeId: 'roadmap'
+				mapTypeControlOptions : {
+					mapTypeIds : []
+				},
+				mapTypeId : 'roadmap'
 			});
 			directionsDisplay.setMap(map);
-
-			
 
 			initRoute();
 		}
@@ -131,10 +184,9 @@
 						lat : position.coords.latitude,
 						lng : position.coords.longitude
 					};
-										
-					setOrigenODestino(pos,tipo,"Ubicación actual");
-					
-					
+
+					setOrigenODestino(pos, tipo, "Ubicación actual");
+
 				}, function() {
 					handleLocationError(true, infoWindow, map.getCenter());
 				});
@@ -163,19 +215,22 @@
 									console
 											.log("Dirección encontrada. RESULTS ==> ");
 									console.log(results);
-									
+
 									var formatted_address = results[0].formatted_address;
 									var location = results[0].geometry.location;
 									var coordinate = {
 										lat : location.lat(),
 										lng : location.lng()
 									};
-									setOrigenODestino(coordinate, tipo,formatted_address);
+									setOrigenODestino(coordinate, tipo,
+											formatted_address);
 
 								} else {
-									console.log('Geocode was not successful for the following reason: '
-											+ status);
-									setOrigenODestino(null, tipo, "Introduza una dirección" );
+									console
+											.log('Geocode was not successful for the following reason: '
+													+ status);
+									setOrigenODestino(null, tipo,
+											"Introduza una dirección");
 								}
 							});
 		}
@@ -183,10 +238,10 @@
 		function setOrigenODestino(direccion, tipo, direccionText) {
 			if (tipo == "ORIGEN") {
 				dirOrigen = direccion;
-				document.getElementById('origen').value  = direccionText;
+				document.getElementById('origen').value = direccionText;
 			} else if (tipo == "DESTINO") {
 				dirDestino = direccion;
-				document.getElementById('destino').value  = direccionText;
+				document.getElementById('destino').value = direccionText;
 			}
 
 			callbackSetRuta();
