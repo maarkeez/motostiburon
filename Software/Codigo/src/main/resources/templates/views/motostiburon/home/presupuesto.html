@@ -2,90 +2,78 @@
 
 
 	<div class="col-sm-12" style="min-height: 450px;">
-		<div id="map" class="col-sm-7" style="min-height: 350px;"></div>
+		<div id="map" class="col-sm-6" style="min-height: 350px;"></div>
 
 
-		<div class="col-sm-5">
+		<div class="col-sm-6">
 
 			<form id="formulario" class="empty"
 				data-th-action="@{/motostiburon/presupuesto/email/consultar}"
-				method="POST" >
-				<div class="form-group col-sm-6">
-					<label for="origen">Origen</label> <input
-						class="form-control col-sm-5" id="origen" name="origen"
-						type="text" onchange="setOrigen()" data-th-value="${origen}" />
-					<button class="btn btn-xs btn-info"
-						onclick="getCurrentAddress('ORIGEN');">
-						<span class="glyphicon glyphicon-map-marker"></span>
-					</button>
+				method="POST" onkeypress="return event.keyCode != 13;">
+
+				<div class="form-group col-sm-8 ">
+					<div class="col-sm-10 empty">
+						<input class="form-control" id="origen" name="origen" type="text"
+							onchange="setOrigen()" data-th-value="${origen}"
+							placeholder="Lugar de recogida" />
+					</div>
+					<div class="col-sm-2 hidden-xs">
+						<button class="btn btn-xm btn-info" type="button"
+							onclick="getCurrentAddress('ORIGEN');">
+							<span class="glyphicon glyphicon-map-marker"></span>
+						</button>
+					</div>
 				</div>
 
-				<div class="form-group col-sm-6">
-					<label for="destino">Destino</label> <input
-						class="form-control  col-sm-5" id="destino" name="destino"
-						type="text" onchange="setDestino();" data-th-value="${destino}" />
-					<button class="btn btn-xs btn-info"
-						onclick="getCurrentAddress('DESTINO');">
-						<span class="glyphicon glyphicon-map-marker"></span>
-					</button>
+				<div class="form-group col-sm-4">
+					<input class="form-control col-sm-5 datepicker"
+						name="fechaRecogida" type="text" data-th-value="${fechaRecogida}"
+						onfocus="blur();" placeholder="Fecha de recogida" />
 				</div>
 
-				<div class="form-group col-sm-6">
-					<label>Fecha de entrega</label> <input
-						class="form-control col-sm-5 datepicker" name="fechaEntrega"
-						type="text" data-th-value="${fechaEntrega}" onfocus="blur();" />
+				<div class="form-group col-sm-8">
+					<div class="col-sm-10 empty">
+						<input class="form-control" id="destino" name="destino"
+							type="text" onchange="setDestino();" data-th-value="${destino}"
+							placeholder="Lugar de entrega" />
+					</div>
+
+					<div class="col-sm-2 hidden-xs">
+						<button class="btn btn-xm btn-info" type="button"
+							onclick="getCurrentAddress('DESTINO');">
+							<span class="glyphicon glyphicon-map-marker"></span>
+						</button>
+					</div>
 				</div>
 
-				<div class="form-group col-sm-6">
-					<label>Fecha de recogida</label> <input
-						class="form-control col-sm-5 datepicker" name="fechaRecogida"
-						type="text" data-th-value="${fechaRecogida}" onfocus="blur();" />
+
+
+				<div class="form-group col-sm-4">
+					<input class="form-control col-sm-5 datepicker" name="fechaEntrega"
+						type="text" data-th-value="${fechaEntrega}" onfocus="blur();"
+						placeholder="Fecha de entrega" />
 				</div>
 
 
 				<div class="col-sm-6">
-					<label>Distancia</label> <span id="distancia"></span>
+					<label>Distancia</label> <span id="distancia">0.0 km</span>
 				</div>
 				<div class="col-sm-6">
-					<label> Duración</label> <span id="duracion"></span>
+					<label> Duración</label> <span id="duracion">0 min</span>
 				</div>
 
 
 				<div class="form-group col-sm-12">
-					<label>E-mail</label> <input class="form-control col-sm-5"
-						type="text" id="email" name="email"
-						placeholder="Direccion de correo electrónico" />
+					<input class="form-control col-sm-5" type="text" id="email"
+						name="email" placeholder="Direccion de correo electrónico" />
 				</div>
-
-				<button class="btn btn-sm">Consultar</button>
+				<div class="form-group col-sm-12">
+					<button class="btn btn-xm btn-success">Solicitar
+						presupuesto por email</button>
+				</div>
 			</form>
 		</div>
 	</div>
-<!-- 	<button id="btn-Convert-Html2Image">Download</button> -->
-	<script data-th-inline="javascript">
-		$("#btn-Convert-Html2Image").on(
-				'click',
-				function() {
-
-					var element = $("#formulario");
-					var getCanvas; // global variable
-
-					html2canvas(element, {
-						onrendered : function(canvas) {
-							getCanvas = canvas;
-							
-							var imgageData = getCanvas.toDataURL("image/png");
-							// Now browser starts downloading it instead of just showing it
-							var newData = imgageData.replace(/^data:image\/png/,
-									"data:application/octet-stream");
-							window.open(newData);
-						}
-					});
-
-					
-				});
-	</script>
-
 
 	<script data-th-inline="javascript">
 		// <![CDATA[
@@ -94,7 +82,7 @@
 		 * Mapa
 		 ********************************/
 		var map;
-		var geoCoder;
+		var geocoder;
 		var directionsDisplay;
 		var directionsService;
 		var dirOrigen = null;
@@ -185,7 +173,8 @@
 						lng : position.coords.longitude
 					};
 
-					setOrigenODestino(pos, tipo, "Ubicación actual");
+					//setOrigenODestino(pos, tipo, "Ubicación actual");
+					geocodeLatLng(pos,tipo);
 
 				}, function() {
 					handleLocationError(true, infoWindow, map.getCenter());
@@ -195,6 +184,26 @@
 				handleLocationError(false, infoWindow, map.getCenter());
 			}
 		}
+		
+		function geocodeLatLng(coordenada,tipo) {
+			geocoder.geocode({'location': coordenada}, function(results, status) {
+	          if (status === 'OK') {
+	            if (results[1]) {
+	             	if(tipo =="DESTINO"){
+	             		document.getElementById('destino').value=results[1].formatted_address;
+	             		setDestino();
+	             	}else if (tipo == "ORIGEN"){
+	             		document.getElementById('origen').value=results[1].formatted_address;
+	             		setOrigen();
+	             	}
+	            } else {
+	              console.log("No se han encontrado resultados para la búsqueda");
+	            }
+	          } else {
+	        	  console.log('Geocoder failed due to: ' + status);
+	          }
+	        });
+	      }
 
 		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 			infoWindow.setPosition(pos);
@@ -229,8 +238,7 @@
 									console
 											.log('Geocode was not successful for the following reason: '
 													+ status);
-									setOrigenODestino(null, tipo,
-											"Introduza una dirección");
+									setOrigenODestino(null, tipo, "");
 								}
 							});
 		}
@@ -238,7 +246,9 @@
 		function setOrigenODestino(direccion, tipo, direccionText) {
 			if (tipo == "ORIGEN") {
 				dirOrigen = direccion;
+
 				document.getElementById('origen').value = direccionText;
+
 			} else if (tipo == "DESTINO") {
 				dirDestino = direccion;
 				document.getElementById('destino').value = direccionText;

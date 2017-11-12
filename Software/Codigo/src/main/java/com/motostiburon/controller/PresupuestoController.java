@@ -84,8 +84,8 @@ public class PresupuestoController {
 		
 		String mensaje = "Este mensaje ha sido enviado automáticamente desde <a href='wwww.motostiburon.es'>wwww.motostiburon.es</a>";
 		mensaje += "<br/>";
-		mensaje += "Recogida de moto en "+origen+" el día "+fechaEntrega + ".<br/>";
-		mensaje += "Llevar la moto a "+destino+" el día "+ fechaRecogida + ".<br/>";
+		mensaje += "Recogida de moto en "+origen+" el día "+fechaRecogida  + ".<br/>";
+		mensaje += "Llevar la moto a "+destino+" el día "+ fechaEntrega + ".<br/>";
 		mensaje += "<br/>";
 		
 		emailService.sendMail(email, "Consulta de presupuesto", mensaje);
