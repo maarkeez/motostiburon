@@ -60,12 +60,15 @@ public class IndexController {
 		ModelAndView view = new ModelAndView("index");
 		
 		List<String> listadoLogosClientes = new ArrayList<String>();
-		listadoLogosClientes.add("bmw-logo.png");
 		listadoLogosClientes.add("harley-davidson-logo.png");
-		listadoLogosClientes.add("honda-logo.png");
 		listadoLogosClientes.add("piaggio-logo.png");
-		listadoLogosClientes.add("suzuki-logo.png");
+		listadoLogosClientes.add("triumph-logo.png");
+		listadoLogosClientes.add("royal-enfield.png");
+		listadoLogosClientes.add("bmw-logo.png");
+		listadoLogosClientes.add("honda-logo.png");
 		listadoLogosClientes.add("yamaha-logo.png");
+		listadoLogosClientes.add("suzuki-logo.png");
+
 		
 		view.addObject("contenedor", CONTENEDOR_CLIENTES);
 		view.addObject("fragmento", FRAGMENTO);
