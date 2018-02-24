@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>TIBURÓN :: Transporte de Motos</title>
+<meta name="title" content="TIBURÓN :: Transporte de Motos"></meta>
+<meta name="DC.Title" content="TIBURÓN :: Transporte de Motos"></meta>
+<meta http-equiv="title" content="TIBURÓN :: Transporte de Motos"></meta>
+<meta name="keywords" content="transpote, motos, asistencia, traslados, concesionarios, itv, moto-grua, quads, bikes, piaggio, peugeot, ducati, kasasaki, honda, yamaha, suzuki, polaris, bombardier, harley"></meta>
+<meta name="description" content="Tiburon Transporte de Motos, especialistas en motos y quads, servicio de moto-grua, pasamos la ITV, talleres concertados, transportes especializados a toda españa. Recogemos en deposito municipal con una experiencia de más de 15 años en el sector."></meta>
+<meta name="author" content="Motos tiburón"></meta>
+<meta name="DC.Creator" content="Motos tiburón"></meta>
+<link rev="made" href="mailto:noreply.motostiburon@gmail.com"/>
+<meta http-equiv="keywords" content="transpote, motos, asistencia, traslados, concesionarios, itv, moto-grua, quads, bikes, piaggio, peugeot, ducati, kasasaki, honda, yamaha, suzuki, polaris, bombardier, harley"></meta>
+<meta http-equiv="description" content="Tiburon Transporte de Motos, especialistas en motos y quads, servicio de moto-grua, pasamos la ITV, talleres concertados, transportes especializados a toda españa. Recogemos en deposito municipal con una experiencia de más de 15 años en el sector."></meta>
+<meta http-equiv="DC.Description" content="Tiburon Transporte de Motos, especialistas en motos y quads, servicio de moto-grua, pasamos la ITV, talleres concertados, transportes especializados a toda españa. Recogemos en deposito municipal con una experiencia de más de 15 años en el sector."></meta>
+<meta name="VW96.objecttype" content="Homepage "></meta>
+<meta name="DC.Language" scheme="RFC1766" content="Spanish"></meta>
+<meta name="distribution" content="global"></meta>
+<meta name="resource-type" content="document"></meta>
+<meta http-equiv="Pragma" content="no-cache"></meta>
+<meta name="Revisit" content="30 days"></meta>
+<meta name="robots" content="all"></meta>
+
+
+
+
+<meta charset="utf-8" />
+<!-- Necesario para que reconozca todo en internet explorer -->
+<meta http-equiv="X-UA-Compatible" content="IE=11" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta http-equiv="Content-type" content="text/html;" charset="utf-8" />
+<!-- encoding para la página -->
+
+<!-- Codificación necesaria para que sea aceptado por todos los dispositivos gracias a bootstrap -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="icon" href="/static/images/logo/logo_tib.ico"></link>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript"
+	src="/static/js/bootstrap-datepicker.es.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" />
+
+<link rel="stylesheet" href="/static/css/index.css"></link>
+
+<!-- Hoja de estilo fuentes google -->
+<link href="/font/material-design-icons/material-icons.css"
+	rel="stylesheet" />
+
+
+<!-- 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,300,700" media="screen, print"/> -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+	rel="stylesheet" media="screen, print" />
+
+
+<script src="/static/js/custom-date-picker.js"></script>
+
+</head>
+
+<body onscroll="stickNavBar()"
+	style="font-family: 'Source Sans Pro', sans-serif; font-size: 18px;">
+
+	<div id="imageSlider" class="col-sm-12 empty"
+		style="background-color: black; min-height: 530px; -webkit-transition: background-image 0.2s ease-in-out; transition: background-image 0.2s ease-in-out;">
+
+		<div class="col-sm-12 empty"></div>
+
+		<div class="col-sm-12 empty"
+			style="position: absolute; height: 60px; width: 100%; bottom: 0px;">
+
+			<button onclick="showPreviousImage();" class="btn btn-xs"
+				style="height: 60px; float: left; background-color: rgb(128, 128, 128, 0.5)">
+				<span class="glyphicon glyphicon-chevron-left" style="color: white"></span>
+			</button>
+
+			<button onclick="showNextImage();" class="btn btn-xs"
+				style="height: 60px; float: right; background-color: rgb(128, 128, 128, 0.5)">
+				<span class="glyphicon glyphicon-chevron-right" style="color: white"></span>
+			</button>
+
+			<button class="btn btn-xs"
+				style="background-color: transparent; display: block; margin: 0 auto;">
+				<span id="sliderSpan1" class="glyphicon glyphicon-asterisk"
+					style="color: grey;"></span> <span id="sliderSpan2"
+					class="glyphicon glyphicon-asterisk" style="color: white;"></span>
+				<span id="sliderSpan3" class="glyphicon glyphicon-asterisk"
+					style="color: grey;"></span>
+			</button>
+		</div>
+	</div>
+
+	<div id="cabecera" class="navbar col-sm-12"
+		style="height: 45px; border: 0px; padding-right: 0px;">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#collapseMenu"
+				style="width: 45px; height: 45px; margin: 0px; padding: 0px; border: 0px; margin-right: 5px;">
+				<span class="material-icons"
+					style="font-size: 40px; color: white; margin: 3px; width: 100%; border-radius: 7px; border: 1px;">dehaze</span>
+			</button>
+			<a class="navbar-brand active" href="/motostiburon/home"> <span
+				class="glyphicon glyphicon-home"></span>
+
+			</a> <img class="visible-xs motosTiburonLetras" alt="Motos tiburón"
+				src="/static/images/motos_tiburon_letras.png"
+				style="height: 120px; position: relative; top: -30px; float: right" />
+
+
+
+		</div>
+
+		<div class="collapse navbar-collapse" id="collapseMenu">
+			<ul class="nav navbar-nav" style="margin: 0px; border: 0px">
+				<li><a href="/motostiburon/empresa">Empresa</a></li>
+				<li><a href="/motostiburon/servicios">Servicios</a></li>
+				<li><a href="/motostiburon/clientes">Clientes</a></li>
+				<li><a href="/motostiburon/contacto">Contacto</a></li>
+				<li><a href="/motostiburon/presupuesto">Presupuesto</a></li>
+			</ul>
+
+			<div>
+				<img class="hidden-xs motosTiburonLetras" alt="Motos tiburón"
+					src="/static/images/motos_tiburon_letras.png"
+					style="height: 120px; position: relative; top: -30px; float: right" />
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div id="bodyContent" class="col-sm-12"
+		style="background-color: white; min-height: 300px; margin: 0px; padding: 0px;">
+
+		<div class="col-sm-12" style="min-height: 60px"></div>
+
+		<div data-th-include="${contenedor}::${fragmento}"></div>
+
+
+	</div>
+
+	<div class="col-sm-12"
+		style="min-height: 20px; background-color: white;"></div>
+
+	<div class="col-sm-12"
+		style="min-height: 300px; background-color: #333;">
+		<div class="col-sm-9" style="min-height: 200px;">
+			<div style="height: 20px;"></div>
+			<img alt="Tiburón SL."
+				src="/static/images/logo/logo_tib_burned.png" border="0" />
+		</div>
+		<div class="col-sm-3">
+			<p></p>
+			<p>
+				<a target="_blank" title="Síguenos en facebook" href="#"><img
+					alt="Síguenos en facebook"
+					src="/static/images/facebook_30x30.png" border="0"
+					style="filter: grayscale(100%);" /></a> <a target="_blank"
+					title="Síguenos en twitter" href="#"><img
+					alt="Síguenos en twitter"
+					src="/static/images/twitter_30x30.png" border="0"
+					style="filter: grayscale(100%);" /></a> <a target="_blank"
+					title="Síguenos en instagram" href="#"><img
+					alt="Síguenos en instagram"
+					src="/static/images/instagram_30x30.png" border="0"
+					style="filter: grayscale(100%);" /></a>
+			</p>
+			<p></p>
+			<p>
+				<a href="tel:608 72 36 56" style="color: #959595; font-size: 24px;"><b>608
+						72 36 56</b></a>
+			</p>
+			<p>
+				<a style="color: #959595; font-size: 24px;"
+					href="mailto:info@motostiburon.es">info@motostiburon.es</a>
+			</p>
+			<p style="color: white; font-size: 14px;">Estamos a tu
+				disposición de Lunes a Viernes de 9h. a 20h.</p>
+
+		</div>
+		<div class="col-sm-12" style="height: 1px; background-color: gray;">
+		</div>
+		<div class="col-sm-12">
+			<p style="color: #959595; font-size: 14px;">© Copyright 2006-2018
+				TIBURON Transportes de Motos. Todos los derechos reservados.</p>
+		</div>
+
+	</div>
+
+
+	<script inline="javascript">
+		// <![CDATA[
+		/********************************
+		 * Visor de imágenes
+		 ********************************/
+		var imagesPath = [ "/static/images/home/slider/1.jpg",
+				"/static/images/home/slider/2.jpg", "/static/images/home/slider/3.jpg" ];
+
+		var sliderSpans = [ "sliderSpan1", "sliderSpan2", "sliderSpan3" ];
+
+		var indexActualImage = 0;
+		var indexMaxValue = imagesPath.length - 1;
+		showImage(indexActualImage);
+		var transicionFondo = setInterval(function() {
+			showNextImage();
+		}, 3000);
+
+		function resetTransicionFondo() {
+			clearInterval(transicionFondo);
+			transicionFondo = setInterval(function() {
+				showNextImage();
+			}, 3000);
+		}
+
+		function showNextImage() {
+
+			indexActualImage++;
+			if (indexActualImage > indexMaxValue) {
+				indexActualImage = 0;
+			}
+			showImage(indexActualImage);
+
+		}
+
+		function showPreviousImage() {
+
+			indexActualImage--;
+			if (indexActualImage < 0) {
+				indexActualImage = indexMaxValue;
+			}
+			showImage(indexActualImage);
+		}
+
+		function showImage(indexToShow) {
+
+			document.getElementById(sliderSpans[0]).style.color = 'grey';
+			document.getElementById(sliderSpans[1]).style.color = 'grey';
+			document.getElementById(sliderSpans[2]).style.color = 'grey';
+			document.getElementById(sliderSpans[indexToShow]).style.color = 'white';
+
+			var strUrl = 'url(' + imagesPath[indexToShow] + ')';
+			// 			console.log("Imagen a mostrar:");
+			// 			console.log(strUrl);
+
+			document.getElementById("imageSlider").style.backgroundRepeat = 'no-repeat';
+			document.getElementById("imageSlider").style.backgroundPosition = 'center';
+			document.getElementById("imageSlider").style.backgroundSize = 'cover';
+			document.getElementById("imageSlider").style.backgroundImage = strUrl;
+
+			resetTransicionFondo();
+		}
+
+		/********************************
+		 * Menú flotante
+		 ********************************/
+		var navbar = document.getElementById("cabecera");
+		var sticky = navbar.offsetTop;
+		var bodyContent = document.getElementById("bodyContent");
+
+		function stickNavBar() {
+			if (window.pageYOffset >= sticky) {
+				navbar.classList.add("navbar-fixed-top")
+				bodyContent.style.paddingTop = "50px";
+				$(".motosTiburonLetras").css('top', "-25px");
+
+			} else {
+				navbar.classList.remove("navbar-fixed-top");
+				bodyContent.style.paddingTop = "0px";
+				$(".motosTiburonLetras").css('top', "-30px");
+
+			}
+		}
+
+		/***********************************
+		 * Auto scroll
+		 ***********************************/
+		var autoScrollEnabled = /*[[${autoScrollEnabled}]]*/false;
+		console.log("autoScrollEnabled==>" + autoScrollEnabled);
+		$(document).ready(function() {
+			if (autoScrollEnabled) {
+				$('body,html').animate({
+					scrollTop : sticky
+				}, 2000);
+			}
+		});
+
+		// ]]>
+	</script>
+
+
+
+
+
+</body>
+</html>
