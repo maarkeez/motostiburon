@@ -40,7 +40,7 @@ public class EmailService {
 		return authenticator;
 	}
 
-	private Message getMessage(String de, String para, String asunto, String mensaje, Session session) throws MessagingException {
+	private Message getMessage(String de, String para, String cc, String asunto, String mensaje, Session session) throws MessagingException {
 		Message message = new MimeMessage(session);
 
 		message.setFrom(new InternetAddress(de));
@@ -51,6 +51,8 @@ public class EmailService {
 
 		// Set To: header field of the header.
 		message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(para));
+		message.setRecipients(Message.RecipientType.CC, InternetAddress.parse(cc));
+		
 
 		// Set Subject: header field
 		message.setSubject(asunto);
@@ -76,11 +78,12 @@ public class EmailService {
 		// Recipient's email ID needs to be mentioned.
 		String para = "noreply.motostiburon@gmail.com";
 		String password = "1234567890qwert";
+		String cc = de;
 
 		Session session = Session.getInstance(getSMTPProperties(), getAuthenticator(para, password));
 
 		try {
-			Message message = getMessage(de, para, asunto, mensaje, session);
+			Message message = getMessage(de, para,cc, asunto, mensaje, session);
 
 			Transport.send(message);
 			System.out.println("Email enviado correctamente");
