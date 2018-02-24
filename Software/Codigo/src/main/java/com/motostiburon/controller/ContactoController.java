@@ -24,6 +24,11 @@ public class ContactoController {
 	@Autowired
 	private EmailService emailService;
 
+	/**
+	 * @param request
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView show(HttpServletRequest request, HttpSession session) {
 		ModelAndView view = new ModelAndView("index");
