@@ -1,0 +1,20 @@
+
+AYUDA ASPMAIL
+
+
+La página que llama a aspmail.asp debe llevar obligatoriamente estos campos dentro de un
+formulario (form) bien como etiquetas ocultas (hidden), campos de texto (text) o cualquier
+otro objeto de un formulario(select, checkbox, radio, etc):
+
+
+	Campos obligatorios	Descripcion
+-------------------------------------------------------------------	
+	smtp			Servidor de correo SMTP
+	remitente		Dirección del remitente
+	para			Email de destino
+	asunto			Asunto
+	envio_correcto		Página a mostrar si el envío es correcto
+	envio_erroneo		Página a mostrar si el envío es erroneo
+
+
+Los campos que se pongan en este formulario con otros nombres se envían como cuerpo del mensaje.

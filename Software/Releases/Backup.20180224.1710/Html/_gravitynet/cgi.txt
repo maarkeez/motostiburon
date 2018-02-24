@@ -1,0 +1,21 @@
+
+Counter (contador de visitas): abra el archivo counter.htm, aquí se describe como utilizar el contador. El contador, counter.exe, se encuantra en su directorio cgi-bin, aqui tambien esta ubivcado el directorio /digits con los graficos para cada numero.
+
+
+Mailer (formulario a email): abra el archivo aspmail.txt, aquí encontrará ayuda de como utilizar el componente aspmailer para el envío de formularios a email
+ 
+
+El servidor donde esta su dominio trabaja bajo Win2000 con IIS, por lo que CGIs escritos para UNIX es posible que no funcionen.
+Su directorio CGI-BIN tiene todos los permisos necesarios para ejecutar Perl, ISAPI y otras aplicaciones CGI, como precompilados ejecutables ".exe".
+
+
+############
+IMPORTANTE:
+############
+Recomendamos que compruebe localmemente todos sus scripts antes de ejecutarlos en el servidor. De esta manera nos evitaremos posibles caidas del servidor y que esto afecte a otros clientes, recordarle que la ejecucion de cgis que afecten al buen rendimiento del servidor es motivo de desactivacion inmediata de su cuenta de hospedaje.
+
+
+El soporte para los programas CGI que hemos instalado en su dominio es limitado. Si usted no esta familiarizado con lenguajes de programación, realizamos programas a medida a precios interesantes, para mas información no dude en ponerse en contacto con nosotros. 
+
+
+Saludos,

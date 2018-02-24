@@ -1,0 +1,99 @@
+<html>
+
+<head>
+<title>Uso del Contador</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+<div align="center"><div align="center"><center>
+
+<table border="1" cellpadding="5" cellspacing="5" width="500" id="table1" style="border-collapse: collapse" bordercolor="#D2D2D2">
+  <tr>
+    <td>
+<div align="center"><div align="center"><center>
+
+<pre><font size="5" face="Verdana">Uso del Contador de Visitas</font></pre>
+</center></div>
+
+</div>
+
+<p><font face="Verdana">En su plan de alojamiento se ha instalado el cgi 
+counter.exe dentro del directorio /cgi-bin. Se trata de un contador de visitas 
+para su pagina web.<br>
+<br>
+<br>
+<br>
+<b>Características:</b></font></p>
+    <ul>
+      <li><font face="Verdana">Lo puede insertar en una o varias páginas.</font></li>
+      <li><font face="Verdana">Visible o invisible.</font></li>
+      <li><font face="Verdana">Es posible definir diferentes dígitos o incluso 
+      crear sus propios dígitos.</font></li>
+      <li><font face="Verdana">Le permite definir numero de visitas iniciales, o 
+      modificar el numero de visitas en cualquier momento.<br>
+&nbsp;</font></li>
+    </ul>
+    <p><font face="Verdana"><br>
+    <b>Funcionamiento:</b></font></p>
+    <p><font face="Verdana">El uso del contador es muy sencillo. Solo tiene que 
+    copiar el siguiente código html e insertarlo en su página/s web:</font></p>
+    <blockquote>
+      <p>&lt;img src=&quot;/cgi-bin/counter.exe?<font color="#008000">link</font>=pagina1&amp;<font color="#008000">style</font>=pix2&quot; alt=&quot;Contador&quot;&gt;<br>
+&nbsp;</p>
+    </blockquote>
+
+<p><font face="Verdana"><span style="font-size: 9px">Esta página ha sido visitada:<img
+src="/cgi-bin/counter.exe?link=pagina1&style=pix2" alt="Counter"
+align="bottom"> veces </span></font> </p>
+    <p>&nbsp;</p>
+
+<pre><b><font face="Verdana" size="4">Propiedades:</font></b></pre>
+    <pre><font face="Verdana" size="3">En el código de arriba, puede ver dos parámetros:</font></pre>
+    <ul>
+      <li>
+      <pre><font face="Verdana" size="3"><font color="#008000">link: </font>El valor por defecto es &quot;pagina1&quot;.
+Si quiere insertar contadores en diferentes páginas, tendrá que modificar el valor de <font color="#008000">link </font>para cada página.<font color="#008000">
+</font>Ej: pagina1 para la pagina principal, pagina2 para una de las paginas secundarias, etc..</font></pre>
+      </li>
+      <li>
+
+<pre><font face="Verdana" size="3"><font color="#008000">style</font>: Este valor define el estilo de dígitos que quiere mostrar. Dentro del directorio /cgi-bin/digits encontrará varios 
+estilos de dígitos. </font></pre>
+      </li>
+    </ul>
+
+<p>&nbsp;</p>
+<p><b><font face="Verdana" size="4">Archivos del contador:</font></b></p>
+<ul>
+  <li><font face="Verdana"><b>counter.exe : </b>Es el programa cgi compilado en 
+  C.</font></li>
+  <li><font face="Verdana"><b>counter.dat : </b>En este archivo de texto se 
+  guarda la información de visitas.<b> </b>Un ejemplo de counter.dat que 
+  almacena visitas de dos contadores seria el siguiente.<b><br>
+&nbsp;</b></font><pre>2
+pagina1 1504
+pagina2 552
+</pre>
+  <p><font face="Verdana">La primera línea muestra el numero de contadores (2)<br>
+  Las líneas siguientes muestran el nombre del contador y el numero de visitas<br>
+  <b><br>
+&nbsp;</b></font></p></li>
+  <li><font face="Verdana"><b>counter.cfg : </b>Es un archivo de texto donde se 
+  puede configurar el acceso externo al contador. No es necesario modificarlo. 
+  Tal y como esta por defecto, permite el uso del contador solo desde su pagina 
+  web.</font></li>
+  <li><font face="Verdana"><b>/digits : </b>directorio donde se guardan los 
+  dígitos. Dentro hay una carpeta /clearled, donde están los dígitos 
+  transparentes para poder instalar un contador invisible.</font></li>
+</ul>
+<p><font face="Verdana">&nbsp;</font></p>
+
+<pre>&nbsp; </pre>
+
+    <p>&nbsp;</td>
+  </tr>
+</table>
+</center></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+Información sobre los archivos instalados en su plan de alojamiento:
+####################################################################
+
+
+-default.htm: pagina que muestra el texto "en construccion". Debe sobreescribir esta pagina con su pagina de inicio.
+
+
+-cgi-bin/counter.exe (contador de visitas): Abra el archivo counter.htm, aquí se describe como utilizar el contador. El contador, counter.exe, se encuantra en su directorio cgi-bin, aqui tambien esta ubicado el directorio /digits con los graficos para cada numero.
+
+
+-aspmail.asp (formulario a email): abra el archivo aspmail.txt, aquí encontrará ayuda de como utilizar el componente aspmailer para el envío de formularios a email.
+El archivo aspmail.htm es un ejemplo de formulario.
+ 
+
+
+El directorio CGI-BIN tiene todos los permisos necesarios para ejecutar Perl, ISAPI y otras aplicaciones CGI, como precompilados ejecutables ".exe".
+Debido a los permisos de este directorio, es recomendable que suba sus bases de datos Access aqui. 
+
+
+La ejecucion de ASP, ASP.NET y PHP es posible desde cualquier directorio, incluso desde el raiz.
+
+
+############
+IMPORTANTE:
+############
+Recomendamos que compruebe localmemente todos sus scripts antes de ejecutarlos en el servidor. De esta manera nos evitaremos posibles caidas del servicio web y que esto afecte a otros clientes, recordarle que la ejecucion de cgis que afecten al buen rendimiento del servidor es motivo de desactivacion inmediata de su cuenta de hospedaje.
+
+La depuracion de scripts ASP esta desactivada. Puede solicitar la activacion enviando un email al dpto. de soporte.
+
+El soporte para los scripts instalados en su dominio es limitado. Si usted no esta familiarizado con lenguajes de programación, realizamos programas a medida a precios interesantes, para mas información no dude en ponerse en contacto con nosotros. 
+
+
+############
+SEGURIDAD:
+############
+Es muy importante que sus aplicaciones web, ya sean scrips PHP, ASP o precomplilados, esten correctamnete programadas para evitar que comprometan la seguridad de su sitio.
+Hay numerosas aplicaciones que puede instalar en su plan de hospedaje, como PHPNuke, PHPBB, etc.., estas aplicaciones requieren minimos conocimientos en programacion pero debe asegurarse de mantenerlas actualizadas.
+Le recomiendo que se subscriba a foros de seguridad y lea algunas recomendaciones de seguridad en nuestra seccion de Ayuda: http://www.gravitynet.es/ayuda
+
+
+
+
+Saludos,
+
+Gravitynet E-Solutions, S.L.
+http://www.gravitynet.es
+info@gravitynet.es
