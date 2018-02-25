@@ -1,4 +1,4 @@
-<div>
+<div data-ng-controller="inicialCtrl">
 	<div class="col-sm-12" style="text-align: center;">
 		<div class="col-sm-12"></div>
 		<form class="form-group  "
@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="form-group col-sm-2" style="text-align: left;">
-				<input placeholder="Fecha de recogida"
+				<input data-ng-non-bindable placeholder="Fecha de recogida"
 					class="form-control col-sm-5 datepicker" id="fechaRecogida"
 					name="fechaRecogida" type="text" onfocus="blur();" />
 			</div>
@@ -32,7 +32,7 @@
 			</div>
 
 			<div class="form-group col-sm-2" style="text-align: left;">
-				<input placeholder="Fecha de entrega"
+				<input data-ng-non-bindable placeholder="Fecha de entrega"
 					class="form-control col-sm-5 datepicker" id="fechaEntrega"
 					name="fechaEntrega" type="text" onfocus="blur();" />
 			</div>

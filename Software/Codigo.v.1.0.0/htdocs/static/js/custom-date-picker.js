@@ -1,4 +1,4 @@
-$(document).ready(function() {
+function startCustomDatePicker(){
 	// Inicializar valores para datepicker
 
 	$('.datepicker').datepicker({
@@ -32,4 +32,4 @@ $(document).ready(function() {
 			});
 		});
 	});
-});
+}

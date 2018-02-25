@@ -53,17 +53,17 @@
 
 <!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<script type="text/javascript"
-	src="/static/js/bootstrap-datepicker.es.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" />
+src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+<script type="text/javascript" src="/static/js/bootstrap-datepicker.es.min.js"></script>
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css" />
 
 <link rel="stylesheet" href="/static/css/index.css"></link>
 
 <!-- Hoja de estilo fuentes google -->
-<link href="/static/font/material-design-icons/material-icons.css"
-	rel="stylesheet" />
+<link href="/static/font/material-design-icons/material-icons.css" rel="stylesheet" />
 
 
 <!-- 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400,300,700" media="screen, print"/> -->
@@ -112,11 +112,12 @@
 </script>
 
 <script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/motosTiburon.js"></script>
+<script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/inicial.js"></script>
+<script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/empresa.js"></script>
+<script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/servicios.js"></script>
 <script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/clientes.js"></script>
-
-
-
-
+<script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/contacto.js"></script>
+<script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/presupuesto.js"></script>
 
 </head>
 
@@ -338,16 +339,22 @@
 		/***********************************
 		 * Auto scroll
 		 ***********************************/
-		var autoScrollEnabled = /*[[${autoScrollEnabled}]]*/false;
-		console.log("autoScrollEnabled==>" + autoScrollEnabled);
-		$(document).ready(function() {
-			if (autoScrollEnabled) {
-				$('body,html').animate({
-					scrollTop : sticky
-				}, 2000);
-			}
-		});
+//		var autoScrollEnabled = false;
+//		console.log("autoScrollEnabled==>" + autoScrollEnabled);
+//		$(document).ready(function() {
+//			if (autoScrollEnabled) {
+//				$('body,html').animate({
+//					scrollTop : sticky
+//				}, 2000);
+//			}
+//		});
 
+
+		function startAutoScroll(){
+			$('body,html').animate({
+				scrollTop : sticky
+			}, 2000);
+		}
 		// ]]>
 	</script>
 

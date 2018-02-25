@@ -10,4 +10,5 @@ angular.module("motosTiburon")
 		"yamaha-logo.png",
 		"suzuki-logo.png"
 		];
+	startAutoScroll();
 })
