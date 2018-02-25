@@ -8,6 +8,11 @@ angular.module("motosTiburon")
 	$scope.recogida.fechaEntrega="";
 	$scope.recogida.email="";
 
+	$scope.updateRecogida = function () {
+		$scope.recogida.origen=document.getElementById('origen').value;
+		$scope.recogida.destino=document.getElementById('destino').value;
+	}
+
 	$scope.sendSolicitudPresupuesto = function (detallesRecogida) {
 		var recogida = $.param(angular.copy(detallesRecogida));
 		console.log(recogida);
