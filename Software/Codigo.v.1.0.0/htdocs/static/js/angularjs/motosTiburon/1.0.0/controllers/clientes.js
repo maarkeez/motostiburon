@@ -1,0 +1,13 @@
+angular.module("motosTiburon")
+.controller("clientesCtrl",function($scope){
+	$scope.listadoLogosClientes=[
+		"harley-davidson-logo.png",
+		"piaggio-logo.png",
+		"triumph-logo.png",
+		"royal-enfield.png",
+		"bmw-logo.png",
+		"honda-logo.png",
+		"yamaha-logo.png",
+		"suzuki-logo.png"
+		];
+})

@@ -1,0 +1,17 @@
+<div data-ng-controller="clientesCtrl" >
+	<div class="col-sm-12" style="text-align: center;">
+
+
+		<div class="col-sm-12" style="text-align: center; ">
+			<img  alt="Confían en nosotros" src="/static/images/clientes/confianEnNosotros.png"
+				 style="width: 300px;" />
+			
+		</div>
+
+		<div class="col-sm-4" data-ng-repeat="logo in listadoLogosClientes" style="height:200px;">
+			<img alt="{{logo}}" data-ng-src="/static/images/clientes/{{logo}}"
+				class="cover" style="height: 150px; max-width:300px;" />
+		</div>
+
+	</div>
+</div>

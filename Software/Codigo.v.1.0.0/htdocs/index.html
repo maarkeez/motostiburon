@@ -84,34 +84,35 @@
 	angular.module("motosTiburon", ["ngRoute"])
 	.config(function($routeProvider){
 
-//		$routeProvider.when("/clientes", {
-//			templateUrl: "/static/js/angularjs/motosTiburon/1.0.0/views/home/clientes.html"
-//		});
-//
-//		$routeProvider.when("/contacto", {
-//			templateUrl: "/static/js/angularjs/motosTiburon/1.0.0/views/home/contacto.html"
-//		});
-//
-//		$routeProvider.when("/empresa", {
-//			templateUrl: "/static/js/angularjs/motosTiburon/1.0.0/views/home/empresa.html"
-//		});
-//
-//		$routeProvider.when("/presupuesto", {
-//			templateUrl: "/static/js/angularjs/motosTiburon/1.0.0/views/home/presupuesto.html"
-//		});
-//
-//		$routeProvider.when("/servicios", {
-//			templateUrl: "/static/js/angularjs/motosTiburon/1.0.0/views/home/servicios.html"
-//		});
-//
+		$routeProvider.when("/clientes", {
+			templateUrl: "/templates/1.0.0/views/home/clientes.html"
+		});
+
+		$routeProvider.when("/contacto", {
+			templateUrl: "/templates/1.0.0/views/home/contacto.html"
+		});
+
+		$routeProvider.when("/empresa", {
+			templateUrl: "/templates/1.0.0/views/home/empresa.html"
+		});
+
+		$routeProvider.when("/presupuesto", {
+			templateUrl: "/templates/1.0.0/views/home/presupuesto.html"
+		});
+
+		$routeProvider.when("/servicios", {
+			templateUrl: "/templates/1.0.0/views/home/servicios.html"
+		});
+
 		$routeProvider.otherwise({
-			templateUrl: "/static/js/angularjs/motosTiburon/1.0.0/views/home/inicial.html"
+			templateUrl: "/templates/1.0.0/views/home/inicial.html"
 		});
 
 	});
 </script>
 
 <script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/motosTiburon.js"></script>
+<script src="/static/js/angularjs/motosTiburon/1.0.0/controllers/clientes.js"></script>
 
 
 
@@ -160,7 +161,7 @@
 				<span class="material-icons"
 					style="font-size: 40px; color: white; margin: 3px; width: 100%; border-radius: 7px; border: 1px;">dehaze</span>
 			</button>
-			<a class="navbar-brand active" href="#"> <span
+			<a class="navbar-brand active" href="#!/"> <span
 				class="glyphicon glyphicon-home"></span>
 
 			</a> <img class="visible-xs motosTiburonLetras" alt="Motos tiburón"
@@ -173,11 +174,11 @@
 
 		<div class="collapse navbar-collapse" id="collapseMenu">
 			<ul class="nav navbar-nav" style="margin: 0px; border: 0px">
-				<li><a href="#/empresa">Empresa</a></li>
-				<li><a href="#/servicios">Servicios</a></li>
-				<li><a href="#/clientes">Clientes</a></li>
-				<li><a href="#/contacto">Contacto</a></li>
-				<li><a href="#/presupuesto">Presupuesto</a></li>
+				<li><a href="#!/empresa">Empresa</a></li>
+				<li><a href="#!/servicios">Servicios</a></li>
+				<li><a href="#!/clientes">Clientes</a></li>
+				<li><a href="#!/contacto">Contacto</a></li>
+				<li><a href="#!/presupuesto">Presupuesto</a></li>
 			</ul>
 
 			<div>
