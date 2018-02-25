@@ -1,8 +1,7 @@
 <div data-ng-controller="inicialCtrl">
 	<div class="col-sm-12" style="text-align: center;">
 		<div class="col-sm-12"></div>
-		<form class="form-group  "
-			data-th-action="@{/motostiburon/presupuesto/consultar}" method="POST">
+		<div class="form-group" >
 			<div class="hidden-xs col-sm-6 suzuki-background"></div>
 
 			<div class="col-sm-6" style="text-align: left;">
@@ -16,33 +15,34 @@
 
 			<div class="form-group col-sm-4" style="text-align: left;">
 				<input placeholder="Lugar de recogida" class="form-control col-sm-5"
-					id="origen" name="origen" type="text" />
+					id="origen" name="origen" type="text" data-ng-model="$parent.recogida.origen"/>
 			</div>
 
 			<div class="form-group col-sm-2" style="text-align: left;">
-				<input data-ng-non-bindable placeholder="Fecha de recogida"
+				<input placeholder="Fecha de recogida"
 					class="form-control col-sm-5 datepicker" id="fechaRecogida"
-					name="fechaRecogida" type="text" onfocus="blur();" />
+					name="fechaRecogida" type="text" onfocus="blur();" data-ng-model="$parent.recogida.fechaRecogida"/>
 			</div>
 
 			<div class="col-sm-6"></div>
 			<div class="form-group col-sm-4" style="text-align: left;">
 				<input placeholder="Lugar de entrega" class="form-control col-sm-5"
-					id="destino" name="destino" type="text" />
+					id="destino" name="destino" type="text" data-ng-model="$parent.recogida.destino"/>
 			</div>
 
 			<div class="form-group col-sm-2" style="text-align: left;">
-				<input data-ng-non-bindable placeholder="Fecha de entrega"
+				<input placeholder="Fecha de entrega"
 					class="form-control col-sm-5 datepicker" id="fechaEntrega"
-					name="fechaEntrega" type="text" onfocus="blur();" />
+					name="fechaEntrega" type="text" onfocus="blur();" data-ng-model="$parent.recogida.fechaEntrega"/>
 			</div>
 
 			<div class="col-sm-6"></div>
 			<div class="form-group col-sm-6 text-right">
-				<button class="btn btn-xm btn-success">Consultar precios</button>
+				<button class="btn btn-xm btn-success" onClick="location.href='#!/presupuesto'">Consultar precios</button>
 			</div>
 
-		</form>
+		</div>
+
 
 
 

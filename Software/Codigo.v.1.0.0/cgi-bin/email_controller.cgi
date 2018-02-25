@@ -1,14 +1,32 @@
 #!C:\Strawberry\perl\bin\perl.exe
 
+#============================================================================================================================
+#
+#	Nombre:		email_controler.cgi
+#	Descripción:	Controlador que implementa los métodos para:		
+#							- Recibir mensaje POST y enviar email con la plantilla de solicitud de presupuesto al usuario.
+#							- IMPORTANTE: Sólo procesa: application/x-www-form-urlencoded
+#										
+#	Versión:	25-02-2018
+#	Implementado para: Motos Tiburón
+#	Autor:	David Márquez Delgado
+#
+#===========================================================================================================================
+
+
 #############################################################################################################################
 #	Librerías
 #############################################################################################################################
 use strict;
 use warnings;
 
-use lib './lib';	# Directorio de la librería de emails;
+use Cwd 'abs_path'; # Permite objener el path absoulto del script;
+use lib abs_path() . '/lib';	# Directorio de la librería de emails;
 use libreria_emails;
 use CGI;	# Librería para controlar las variables y objetos del CGI
+
+use Data::Dumper; # Debug: Print hash
+
 
 #############################################################################################################################
 #	Variables 
@@ -22,7 +40,8 @@ use CGI;	# Librería para controlar las variables y objetos del CGI
 my $cgi = CGI->new;
 
 # Variables recibidas por POST y/o GET
-my %input = $cgi->Vars;
+my %input = $cgi->Vars; # Debe de ser Content-type: application/x-www-form-urlencoded
+
 
 
 #############################################################################################################################
@@ -47,17 +66,10 @@ Recogida de moto en $origen el día $fecha_origen.
 Llevar la moto a $destino el día $fecha_destino.
 	);
 	
-	&EnviarCorreo($destinatarios,$asunto,$mensaje);
+	my $valor = &enviarCorreo($destinatarios,$asunto,$mensaje);
+	return $valor;
 }
 
-sub printJsonResponse(){
-	my ($status,$message) =@_;
-
-print <<EOF;
-{"status":$status,"message":"$message"}
-EOF
-
-}
 
 # ---------------------------------------------------------------------------------------------------------------------------
 # Main
@@ -70,13 +82,15 @@ print "Content-type: application/json\n\n";
 
 # Recuperar variables del formulario recibido
 my $origen = $input{'origen'} || "";
-my $fecha_origen = $input{'fecha_origen'} || "";
+my $fechaRecogida = $input{'fechaRecogida'} || "";
 my $destino = $input{'destino'} || "";
-my $fecha_destino = $input{'fecha_destino'} || "";
-my $destinatarios = $input{'destinatarios'} || "";
+my $fechaEntrega = $input{'fechaEntrega'} || "";
+my $email = $input{'email'} || "";
 
 # Enviar email 
-&emailRecogida($origen,$fecha_origen,$destino,$fecha_destino,$destinatarios);
+my $enviado = &emailRecogida($origen,$fechaRecogida,$destino,$fechaEntrega,$email);
 
 # Indicar que el email ha sido enviado
-&printJsonResponse(200,"Email enviado correctamente");
+if($enviado == 0){
+	&printJsonResponse(200,"Su presupuesto ha sido solicitado, pronto recibirá un email. Muchas gracias!");
+}

@@ -2,19 +2,23 @@
 
 
 	<div class="col-sm-12" style="min-height: 450px;">
+		<div data-ng-if="$parent.message.show"  class="alert" data-ng-class="$parent.message.class"  role="alert">
+			<span data-ng-bind="$parent.message.message || 'Lo sentimos, se ha producido un error.' "></span>
+		</div>
+
+
 		<div id="map" class="col-sm-6" style="min-height: 350px;"></div>
 
+		
 
 		<div class="col-sm-6">
 
-			<form id="formulario" class="empty"
-				data-th-action="@{/motostiburon/presupuesto/email/consultar}"
-				method="POST" onkeypress="return event.keyCode != 13;">
+			<div id="formulario" class="empty" onkeypress="return event.keyCode != 13;">
 
 				<div class="form-group col-sm-8 ">
 					<div class="col-sm-10 empty">
 						<input class="form-control" id="origen" name="origen" type="text"
-							onchange="setOrigen()" data-th-value="${origen}"
+							onchange="setOrigen()" data-ng-model="$parent.recogida.origen"
 							placeholder="Lugar de recogida" />
 					</div>
 					<div class="col-sm-2 hidden-xs">
@@ -27,14 +31,14 @@
 
 				<div class="form-group col-sm-4">
 					<input class="form-control col-sm-5 datepicker"
-						name="fechaRecogida" type="text" data-th-value="${fechaRecogida}"
+						name="fechaRecogida" type="text" data-ng-model="$parent.recogida.fechaRecogida"
 						onfocus="blur();" placeholder="Fecha de recogida" />
 				</div>
 
 				<div class="form-group col-sm-8">
 					<div class="col-sm-10 empty">
 						<input class="form-control" id="destino" name="destino"
-							type="text" onchange="setDestino();" data-th-value="${destino}"
+							type="text" onchange="setDestino();" data-ng-model="$parent.recogida.destino"
 							placeholder="Lugar de entrega" />
 					</div>
 
@@ -50,7 +54,7 @@
 
 				<div class="form-group col-sm-4">
 					<input class="form-control col-sm-5 datepicker" name="fechaEntrega"
-						type="text" data-th-value="${fechaEntrega}" onfocus="blur();"
+						type="text" data-ng-model="$parent.recogida.fechaEntrega" onfocus="blur();"
 						placeholder="Fecha de entrega" />
 				</div>
 
@@ -65,13 +69,13 @@
 
 				<div class="form-group col-sm-12">
 					<input class="form-control col-sm-5" type="text" id="email"
-						name="email" placeholder="Direccion de correo electrónico" />
+						name="email" data-ng-model="$parent.recogida.email"  placeholder="Direccion de correo electrónico" />
 				</div>
 				<div class="form-group col-sm-12">
-					<button class="btn btn-xm btn-success">Solicitar
+					<button class="btn btn-xm btn-success" data-ng-click="sendSolicitudPresupuesto($parent.recogida)">Solicitar
 						presupuesto por email</button>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 
