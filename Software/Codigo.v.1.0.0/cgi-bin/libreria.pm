@@ -13,7 +13,6 @@
 #===========================================================================================================================
 use strict;
 use warnings;
-use Email::Send::SMTP::Gmail;
 
 # ================
 # Ejemplos de uso
@@ -78,6 +77,37 @@ print <<EOF;
 {"status":$status,"message":"$message"}
 EOF
 
+}
+
+sub sendEmail(){
+
+	# Recibir los parámetros, tanto adjuntos como destinatarios son referencias a arrays de strings
+	my ($path, $para,$asunto,$cuerpo) =@_;
+
+	
+	my $sendItQuietExe = $path . "\\senditquiet\\senditquiet.exe";
+	my $from = 'info@motostiburon.es';
+	my $smtp_user = 'info@motostiburon.es';
+	my $smtp_pwd = 'tiburon92';
+	my $smtp_port = 587;
+	my $smtp_server = 'smtp.serviciodecorreo.es';
+
+	$para = $para . ',info@motostiburon.es';
+
+my $command = <<HERE;
+$sendItQuietExe -body "$cuerpo" -s $smtp_server -port $smtp_port -t "$para" -protocol ssl -subject "$asunto" -f $from -u $smtp_user -p $smtp_pwd
+HERE
+	#print "Commando a ejecutar:\n";
+	#print "$command";
+
+	open my $oldout, ">&STDOUT";  # "dup" the stdout filehandle
+	close STDOUT;
+
+	my $exit_status = system("$command");
+
+	open STDOUT, '>&', $oldout;  # restore the dup'ed filehandle to STDOUT
+
+	return $exit_status;
 }
 
 

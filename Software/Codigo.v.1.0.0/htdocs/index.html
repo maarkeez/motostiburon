@@ -175,11 +175,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/boot
 
 		<div class="collapse navbar-collapse" id="collapseMenu">
 			<ul class="nav navbar-nav" style="margin: 0px; border: 0px">
-				<li><a href="#!/empresa">Empresa</a></li>
-				<li><a href="#!/servicios">Servicios</a></li>
-				<li><a href="#!/clientes">Clientes</a></li>
-				<li><a href="#!/contacto">Contacto</a></li>
-				<li><a href="#!/presupuesto">Presupuesto</a></li>
+				<li><a href="#!/empresa" onclick="triggerCloseMenu();">Empresa</a></li>
+				<li><a href="#!/servicios" onclick="triggerCloseMenu();">Servicios</a></li>
+				<li><a href="#!/clientes" onclick="triggerCloseMenu();">Clientes</a></li>
+				<li><a href="#!/contacto" onclick="triggerCloseMenu();">Contacto</a></li>
+				<li><a href="#!/presupuesto" onclick="triggerCloseMenu();">Presupuesto</a></li>
 			</ul>
 
 			<div>
@@ -334,6 +334,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/boot
 				$(".motosTiburonLetras").css('top', "-30px");
 
 			}
+		}
+
+		function triggerCloseMenu(){
+			$('.navbar-toggle').click();
 		}
 
 		/***********************************

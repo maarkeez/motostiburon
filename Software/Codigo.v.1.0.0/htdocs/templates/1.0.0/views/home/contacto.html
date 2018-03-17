@@ -1,27 +1,27 @@
 <div data-ng-controller="contactoCtrl">
 	<div class="col-sm-12" style="text-align: left;">
+		<div data-ng-if="$parent.message.show"  class="alert" data-ng-class="$parent.message.class"  role="alert">
+			<span data-ng-bind="$parent.message.message || 'Lo sentimos, se ha producido un error.' "></span>
+		</div>
 
-		<form id="formulario" class="empty"
-			data-th-action="@{/motostiburon/contacto/email}" method="POST"
-			onkeypress="return event.keyCode != 13;">
+		<div id="formulario" class="empty">
 
 			<div class="form-group col-sm-4 ">
 				<input class="form-control" name="email" type="text"
+					data-ng-model="$scope.contacto.mensaje.destinatarios"
 					placeholder="Indique su dirección de correo electrónico" />
 			</div>
 			
 			<div class="form-group col-sm-12">
 				<textarea cols="50" rows="10" class="form-control" name="mensaje"
-					
+					data-ng-model="$scope.contacto.mensaje.mensaje"
+					maxlength="1000"
 					placeholder="¡Háganos llegar su consulta lo antes posible!"></textarea>
 			</div>
 			<div class="form-group col-sm-12">
-			<button class="btn btn-xm btn-success">Consultar</button>
+			<button class="btn btn-xm btn-success"
+			data-ng-click="sendContactoMensaje($scope.contacto.mensaje);">Consultar</button>
 			</div>
-		</form>
-
-
-
-
+		</div>
 	</div>
 </div>

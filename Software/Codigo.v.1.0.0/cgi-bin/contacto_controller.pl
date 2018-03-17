@@ -19,13 +19,14 @@
 #############################################################################################################################
 use strict;
 use warnings;
+use File::Basename qw();
+my ($name, $path, $suffix) = File::Basename::fileparse($0);
 
-use Cwd 'abs_path'; # Permite objener el path absoulto del script;
-use lib abs_path() . '/lib';	# Directorio de la librería de emails;
-use libreria_emails;
+use lib 'D:\\XVRT\\motostiburon.es\\Html\\cgi-bin';	# Directorio de la librería de emails;
+
+use libreria;
 use CGI;	# Librería para controlar las variables y objetos del CGI
 
-use Data::Dumper; # Debug: Print hash
 
 
 #############################################################################################################################
@@ -39,10 +40,6 @@ use Data::Dumper; # Debug: Print hash
 # Obtenemos el cgi con las variables:
 my $cgi = CGI->new;
 
-# Variables recibidas por POST y/o GET
-my %input = $cgi->Vars; # Debe de ser Content-type: application/x-www-form-urlencoded
-
-
 
 #############################################################################################################################
 # 	Funcionalidad
@@ -52,21 +49,14 @@ my %input = $cgi->Vars; # Debe de ser Content-type: application/x-www-form-urlen
 # Declaración de funciones
 # ---------------------------------------------------------------------------------------------------------------------------
 
-# Función para enviar el email de recogida.
-# Ejemplo de uso: 
-# 	&emailRecogida($origen,$fecha_origen,$destino,$fecha_destino);
-sub emailRecogida(){
+# Función para enviar el email de contacto
+sub emailContacto(){
 
-	my ($origen,$fecha_origen,$destino,$fecha_destino,$destinatarios) =@_;
+	my ($path,$mensaje,$destinatarios) =@_;
 
-	my $asunto=qq(Consulta de presupuesto);
-	my $mensaje=qq(
-Este mensaje ha sido enviado automáticamente desde wwww.motostiburon.es
-Recogida de moto en $origen el día $fecha_origen.
-Llevar la moto a $destino el día $fecha_destino.
-	);
+	my $asunto=qq(Informacion motos tiburon);
 	
-	my $valor = &enviarCorreo($destinatarios,$asunto,$mensaje);
+	my $valor = &sendEmail($path,$destinatarios,$asunto,$mensaje);
 	return $valor;
 }
 
@@ -78,19 +68,21 @@ Llevar la moto a $destino el día $fecha_destino.
 # Imprimir la cabecera del documento
 print "Cache-Control: no-cache,must-revalidate\n";
 print "Pragma: no-cache\n";
-print "Content-type: application/json\n\n";
+#print "Content-type: application/json\n\n";
+print "Content-type: text/html\n\n";
 
 # Recuperar variables del formulario recibido
-my $origen = $input{'origen'} || "";
-my $fechaRecogida = $input{'fechaRecogida'} || "";
-my $destino = $input{'destino'} || "";
-my $fechaEntrega = $input{'fechaEntrega'} || "";
-my $email = $input{'email'} || "";
+my $destinatarios = $cgi->param('destinatarios') || "";
+my $mensaje = $cgi->param('mensaje') || "";
 
 # Enviar email 
-my $enviado = &emailRecogida($origen,$fechaRecogida,$destino,$fechaEntrega,$email);
+my $enviado = &emailContacto($path,$mensaje,$destinatarios);
 
 # Indicar que el email ha sido enviado
 if($enviado == 0){
-	&printJsonResponse(200,"Su presupuesto ha sido solicitado, pronto recibirá un email. Muchas gracias!");
+	&printJsonResponse(200,"Su consulta se ha realizado con éxito, pronto recibirá un email. Muchas gracias!");
+} else {
+	&printJsonResponse(500,"Lo sentimos, se ha producido un error al intentar conectar con el servidor de correo.");
 }
+
+1;
